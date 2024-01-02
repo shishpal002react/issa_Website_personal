@@ -1,0 +1,38 @@
+.pricing-page-container {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.pricing-page-container2 {
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 1rem;
+  height: auto;
+  flex-wrap: nowrap;
+  /* gap: "1" */
+  /* border-right: 1px solid black; */
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.price-calculator-page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
