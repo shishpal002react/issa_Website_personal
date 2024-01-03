@@ -1,8 +1,69 @@
 import { useNavigate } from "react-router-dom";
 import "./css/ResourcesPage.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ResourcesPage = () => {
   const navigate = useNavigate();
+  const [CategoryData, setCategoryData] = useState([]);
+  const [blogNotes, setBlogNotes] = useState("");
+  const [mainBlog, setMainBlog] = useState("");
+  const [ebook, setEbook] = useState([]);
+
+  const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
+
+  const getCategoryData = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}BlogCategory/getBlogCategory`);
+      setCategoryData(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getBlogNotes = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}Blog/getBlogNotes`);
+      setBlogNotes(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getMainNotes = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}Blog/getBlogMain`);
+      setMainBlog(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getEbook = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}Ebook/getEbook`);
+      setEbook(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCategoryData();
+    getBlogNotes();
+    getMainNotes();
+    getEbook();
+  }, []);
+
+  const onDownload = (pdfUrl) => {
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "document.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="support-page">
       <div className="support-page-container">
@@ -25,7 +86,7 @@ const ResourcesPage = () => {
                   height: "auto",
                   marginBottom: "1rem",
                 }}
-                src={"/ResourcesPage/Picture1.png"}
+                src={blogNotes?.image}
                 alt="partner"
               />
             </div>
@@ -37,13 +98,10 @@ const ResourcesPage = () => {
                   fontSize: "1rem",
                 }}
               >
-                View Sample Notes Created Using OasisNotes
+                {blogNotes?.title}
               </p>{" "}
               <br />
-              Waystar simplifies and unifies the healthcare revenue cycle with
-              innovative technology thatallows clients to collect more with less
-              cost and less stress, so they can focus on their goals,patients,
-              and communities.
+              {blogNotes?.description}
               <br />
             </p>
           </div>
@@ -58,18 +116,14 @@ const ResourcesPage = () => {
                 paddingTop: "1.5rem",
               }}
             >
-              Blog
+              {mainBlog?.title}
             </p>
             <div className="resources-page-container2111">
               <div className="resources-page-container21111">
+                <p>{mainBlog?.description}</p>
                 <p>
-                  Explore comprehensive blog posts on a variety of topics
-                  written by our experts.From note writing tips to tips for
-                  clinicians, we have all the resources you need to grow your
-                  practice and expand your industry knowledge.
-                </p>
-                <p>
-                  <button onClick={() => navigate("/resources/blog")}
+                  <button
+                    onClick={() => navigate("/resources/blog")}
                     style={{
                       backgroundColor: "#1C5877",
                       color: "white",
@@ -99,253 +153,53 @@ const ResourcesPage = () => {
                   Browse by Category
                 </p>
                 <div className="resources-page-container211111">
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
+                  {CategoryData?.map((item, i) => (
+                    <div
                       style={{
-                        maxWidth: "200px",
-                        maxHeight: "200px",
-                        width: "auto",
-                        height: "auto",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: ".2rem",
+                        alignItems: "center",
+                        marginBottom: "2rem",
                       }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
+                      key={i}
                     >
-                      Note Waiting Tips
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      VIEW POSTS
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
-                      style={{
-                        maxWidth: "200px",
-                        maxHeight: "200px",
-                        width: "auto",
-                        height: "auto",
-                      }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
-                    >
-                      Note Waiting Tips
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      VIEW POSTS
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
-                      style={{
-                        maxWidth: "200px",
-                        maxHeight: "200px",
-                        width: "auto",
-                        height: "auto",
-                      }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
-                    >
-                      Note Waiting Tips
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      VIEW POSTS
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
-                      style={{
-                        maxWidth: "200px",
-                        maxHeight: "200px",
-                        width: "auto",
-                        height: "auto",
-                      }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
-                    >
-                      Note Waiting Tips
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      VIEW POSTS
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
-                      style={{
-                        maxWidth: "200px",
-                        maxHeight: "200px",
-                        width: "auto",
-                        height: "auto",
-                      }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
-                    >
-                      Note Waiting Tips
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      VIEW POSTS
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
-                      style={{
-                        maxWidth: "200px",
-                        maxHeight: "200px",
-                        width: "auto",
-                        height: "auto",
-                      }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
-                    >
-                      Note Waiting Tips
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      VIEW POSTS
-                    </button>
-                  </div>
+                      <img
+                        src={item?.image}
+                        style={{
+                          maxWidth: "200px",
+                          maxHeight: "200px",
+                          width: "auto",
+                          height: "auto",
+                        }}
+                        alt="image-1"
+                      />
+                      <p
+                        style={{
+                          fontWeight: "700",
+                          fontSize: "1rem",
+                          color: "#32373A",
+                        }}
+                      >
+                        {item?.title}
+                      </p>
+                      <button
+                        style={{
+                          backgroundColor: "#1C5877",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "8px",
+                          fontWeight: "bold",
+                          padding: "0.5rem 1.5rem",
+                        }}
+                        onClick={() => navigate(`/resources/blog/${item?._id}`)}
+                      >
+                        VIEW POSTS
+                      </button>
+                    </div>
+                  ))}
                 </div>
+
                 <div>
                   <p style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
                     Explore Popular Posts
@@ -435,129 +289,51 @@ const ResourcesPage = () => {
                   }}
                   className="resources-page-container211111"
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
+                  {ebook?.map((item, i) => (
+                    <div
                       style={{
-                        maxWidth: "240px",
-                        maxHeight: "240px",
-                        width: "auto",
-                        height: "auto",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: ".2rem",
+                        alignItems: "center",
+                        marginBottom: "2rem",
                       }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
+                      key={i}
                     >
-                      Going Virtual: How to Start a Virtual Practice
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      DOWNLOAD NOW
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
-                      style={{
-                        maxWidth: "240px",
-                        maxHeight: "240px",
-                        width: "auto",
-                        height: "auto",
-                      }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
-                    >
-                      Going Virtual: How to Start a Virtual Practice
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      DOWNLOAD NOW
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".2rem",
-                      alignItems: "center",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    <img
-                      src="/ResourcesPage/pic2.png"
-                      style={{
-                        maxWidth: "240px",
-                        maxHeight: "240px",
-                        width: "auto",
-                        height: "auto",
-                      }}
-                      alt="image-1"
-                    />
-                    <p
-                      style={{
-                        fontWeight: "700",
-                        fontSize: "1rem",
-                        color: "#32373A",
-                      }}
-                    >
-                      Going Virtual: How to Start a Virtual Practice
-                    </p>
-                    <button
-                      style={{
-                        backgroundColor: "#1C5877",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                        padding: "0.5rem 1.5rem",
-                      }}
-                    >
-                      DOWNLOAD NOW
-                    </button>
-                  </div>
+                      <img
+                        src={item?.image}
+                        style={{
+                          maxWidth: "240px",
+                          maxHeight: "240px",
+                          width: "auto",
+                          height: "auto",
+                        }}
+                        alt="image-1"
+                      />
+                      <p
+                        style={{
+                          fontWeight: "700",
+                          fontSize: "1rem",
+                          color: "#32373A",
+                        }}
+                      >
+                        {item?.title}
+                      </p>
+                      <button
+                        style={{
+                          backgroundColor: "#1C5877",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "8px",
+                          fontWeight: "bold",
+                          padding: "0.5rem 1.5rem",
+                        }}
+                        onClick={() => onDownload(item?.link)}
+                      >
+                        DOWNLOAD NOW
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
               {/*  */}

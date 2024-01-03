@@ -7,7 +7,9 @@ export const HomePage = () => {
   const [bottomBanner, setBottomBanner] = useState("");
   const [about, setAbout] = useState("");
   const [choosePharma, setChoosePharma] = useState("");
-  const [trustedImage, setTrustedImage] = useState("");
+  const [trustedImage, setTrustedImage] = useState([]);
+  const [featureDataImage, setFeatureDataImage] = useState([]);
+  const [news, setNews] = useState([]);
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -49,9 +51,28 @@ export const HomePage = () => {
 
   const trustedImageData = async () => {
     try {
-      const res = await axios.get(`${BaseUrl}TrustedClient/addTrustedClient`);
+      const res = await axios.get(`${BaseUrl}TrustedClient/getTrustedClient`);
       setTrustedImage(res?.data?.data);
-      console.log(res?.data?.data, "good product");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const FeatureData = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}OurFeatures/getOurFeatures`);
+      setFeatureDataImage(res?.data?.data);
+      console.log(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getNewsData = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}News/getNews`);
+      setNews(res?.data?.data);
+      console.log(res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +84,8 @@ export const HomePage = () => {
     aboutUs();
     choosePharmaData();
     trustedImageData();
+    FeatureData();
+    getNewsData();
   }, []);
 
   return (
@@ -127,14 +150,15 @@ export const HomePage = () => {
           columnGap: ".3rem",
         }}
       >
-        <div>
-          <img
-            style={{ width: "250px", height: "180px" }}
-            src={trustedImage?.image}
-            alt="image2"
-          />
-          <p>{trustedImage?._id}</p>
-        </div>
+        {trustedImage?.map((item, i) => (
+          <div key={i}>
+            <img
+              style={{ width: "250px", height: "180px" }}
+              src={item?.image}
+              alt="image2"
+            />
+          </div>
+        ))}
       </div>
 
       <div className="features-container-homepage1">
@@ -151,452 +175,33 @@ export const HomePage = () => {
             Our Features
           </p>
           <div className="features-container-homepage">
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Built.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Built-In CRM
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Organize and track inquires, referral sources, family members
-                  with high visibility throughout the user interface.
-                </p>
+            {featureDataImage?.map((item, i) => (
+              <div
+                style={{ display: "flex", gap: "1rem", margin: ".2rem" }}
+                key={i}
+              >
+                <img
+                  style={{ maxWidth: "45px", maxHeight: "45px" }}
+                  src={item?.image}
+                  alt="built"
+                />
+                <div>
+                  <p
+                    style={{
+                      color: "#1C5877",
+                      fontWeight: "bold",
+                      fontSize: "1rem",
+                      lineHeight: "1rem",
+                    }}
+                  >
+                    {item?.title}
+                  </p>
+                  <p style={{ color: "#3D3D3D" }}>{item?.description}</p>
+                </div>
               </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Electric.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Electronic Health Record
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Comprehensive EHR tailored for Behavioral Health with a focus
-                  on flexibility and efficiency.
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/No.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  No Implementation Fees
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Unlimited training and support, unlimited data, month-to-month
-                  contract with no set-up fees!
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Outcome.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  OutcomeTools
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Track outcome measures with ease by automating the exchange
-                  between your organization and the people you serve.
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Patient.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Patient Portal
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Safely and securely share patient health information while
-                  automating the admissions process.{" "}
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/calender.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Patient Calendar
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Automatically include notes and billing codes for each
-                  appointment. Easily track cancellations and no-shows.{" "}
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Telehealth.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Telehealth
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Reliable, HIPAA compliant and fully integrated with BestNotes.
-                  Great for individual or group therapy.{" "}
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Management.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Medication Management
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Electronic Medication Administration Record (eMAR) and
-                  e-prescribing including controlled substances.{" "}
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Figure .png.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Human Resources
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Track employee files, emergency contacts, CEU’s and receive
-                  employment applications from your website.{" "}
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/clilnical.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Clinical Content
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Dedicated clinical team to keep your content up to date with
-                  CARF, Joint Commission Payor standards.
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Billing.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Billing
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Authorization Tracking, Claim Builder and 3rd-party biller
-                  support{" "}
-                </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: "1rem", margin: ".2rem" }}>
-              <img
-                style={{ maxWidth: "45px", maxHeight: "45px" }}
-                src="/HomePage/Feactures/Report.png"
-                alt="built"
-              />
-              <div>
-                <p
-                  style={{
-                    color: "#1C5877",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  Reports
-                </p>
-                <p style={{ color: "#3D3D3D" }}>
-                  Powerful report builder backed with 75+ pre-built reports{" "}
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-
-        {/* <p style={{ fontSize: ".8rem", textAlign: "center", color: "black" }}>
-          Services
-        </p> */}
-        {/* <p
-          style={{
-            textAlign: "center",
-            width: "40%",
-            margin: "auto",
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-          }}
-        >
-          Feel Like Home With Best Medical Care
-        </p> */}
-        {/* Containeer-images */}
-        {/* <div className="image-container-homePage1">
-          <div style={{ padding: "1rem" }}>
-            <img
-              style={{
-                maxWidth: "30px",
-                maxHeight: "30px",
-                width: "auto",
-                height: "auto",
-                marginBottom: "1rem",
-              }}
-              src="/HomePage/category/1.png"
-              alt="images"
-            />
-            <p style={{ fontWeight: "bold", lineHeight: ".5rem" }}>
-              Angioplasty
-            </p>
-            <p style={{ width: "90%", fontSize: ".7rem" }}>
-              Our team of highl professionals uses the latest heal echnologies
-              health quickly and easily.
-            </p>
-          </div>
-          <div style={{ padding: "1rem" }}>
-            <img
-              style={{
-                maxWidth: "30px",
-                maxHeight: "30px",
-                width: "auto",
-                height: "auto",
-                marginBottom: "1rem",
-              }}
-              src="/HomePage/category/1.png"
-              alt="images"
-            />
-            <p style={{ fontWeight: "bold", lineHeight: ".5rem" }}>
-              Angioplasty
-            </p>
-            <p style={{ width: "90%", fontSize: ".7rem" }}>
-              Our team of highl professionals uses the latest heal echnologies
-              health quickly and easily.
-            </p>
-          </div>
-          <div>
-            <img
-              style={{
-                maxWidth: "30px",
-                maxHeight: "30px",
-                width: "auto",
-                height: "auto",
-                marginBottom: "1rem",
-              }}
-              src="/HomePage/category/1.png"
-              alt="images"
-            />
-            <p style={{ fontWeight: "bold", lineHeight: ".5rem" }}>
-              Angioplasty
-            </p>
-            <p style={{ width: "90%", fontSize: ".7rem" }}>
-              Our team of highl professionals uses the latest heal echnologies
-              health quickly and easily.
-            </p>
-          </div>
-          <div>
-            <img
-              style={{
-                // maxWidth: "480px",
-                // maxHeight: "150px",
-                width: "100%",
-                height: "100%",
-                marginBottom: "1rem",
-              }}
-              src="https://imgk.timesnownews.com/story/dentist.gif"
-              alt="images"
-            />
-          </div>
-        </div> */}
-        {/* <div
-          style={{ marginBottom: "5rem" }}
-          className="image-container-homePage1"
-        >
-          <div style={{ padding: "1rem" }}>
-            <img
-              style={{
-                maxWidth: "30px",
-                maxHeight: "30px",
-                width: "auto",
-                height: "auto",
-                marginBottom: "1rem",
-              }}
-              src="/HomePage/category/1.png"
-              alt="images"
-            />
-            <p style={{ fontWeight: "bold", lineHeight: ".5rem" }}>
-              Angioplasty
-            </p>
-            <p style={{ width: "90%", fontSize: ".7rem" }}>
-              Our team of highl professionals uses the latest heal echnologies
-              health quickly and easily.
-            </p>
-          </div>{" "}
-          <div>
-            <img
-              style={{
-                // maxWidth: "480px",
-                // maxHeight: "150px",
-                width: "100%",
-                height: "100%",
-                marginBottom: "1rem",
-              }}
-              src="https://imgk.timesnownews.com/story/dentist.gif"
-              alt="images"
-            />
-          </div>
-          <div style={{ padding: "1rem" }}>
-            <img
-              style={{
-                maxWidth: "30px",
-                maxHeight: "30px",
-                width: "auto",
-                height: "auto",
-                marginBottom: "1rem",
-              }}
-              src="/HomePage/category/1.png"
-              alt="images"
-            />
-            <p style={{ fontWeight: "bold", lineHeight: ".5rem" }}>
-              Angioplasty
-            </p>
-            <p style={{ width: "90%", fontSize: ".7rem" }}>
-              Our team of highl professionals uses the latest heal echnologies
-              health quickly and easily.
-            </p>
-          </div>
-          <div>
-            <img
-              style={{
-                maxWidth: "30px",
-                maxHeight: "30px",
-                width: "auto",
-                height: "auto",
-                marginBottom: "1rem",
-              }}
-              src="/HomePage/category/1.png"
-              alt="images"
-            />
-            <p style={{ fontWeight: "bold", lineHeight: ".5rem" }}>
-              Angioplasty
-            </p>
-            <p style={{ width: "90%", fontSize: ".7rem" }}>
-              Our team of highl professionals uses the latest heal echnologies
-              health quickly and easily.
-            </p>
-          </div>
-        </div> */}
       </div>
 
       <div style={{ width: "80%", margin: "auto" }}>
@@ -795,66 +400,21 @@ export const HomePage = () => {
           </div>
         </div>
         <div className="content-homepage123">
-          <div className="content-homepage12334">
-            <div>
-              <img
-                style={{ maxWidth: "130px", width: "auto" }}
-                src="/HomePage/bottom image.png"
-                alt="image"
-              />
+          {news?.map((item, i) => (
+            <div className="content-homepage12334" key={i}>
+              <div>
+                <img
+                  style={{ maxWidth: "130px", width: "auto" }}
+                  src={item?.image}
+                  alt="image"
+                />
+              </div>
+              <div>
+                <p>{item?.title}</p>
+                <p style={{ fontWeight: "bold" }}>{item?.description}</p>
+              </div>
             </div>
-            <div>
-              <p>18 August 2023</p>
-              <p style={{ fontWeight: "bold" }}>
-                Open letter to the residents of Ellsworth, Maine
-              </p>
-            </div>
-          </div>
-          <div className="content-homepage12334">
-            <div>
-              <img
-                style={{ maxWidth: "130px", width: "auto" }}
-                src="/HomePage/bottom image.png"
-                alt="image"
-              />
-            </div>
-            <div>
-              <p>18 August 2023</p>
-              <p style={{ fontWeight: "bold" }}>
-                Open letter to the residents of Ellsworth, Maine
-              </p>
-            </div>
-          </div>
-          <div className="content-homepage12334">
-            <div>
-              <img
-                style={{ maxWidth: "130px", width: "auto" }}
-                src="/HomePage/bottom image.png"
-                alt="image"
-              />
-            </div>
-            <div>
-              <p>18 August 2023</p>
-              <p style={{ fontWeight: "bold" }}>
-                Open letter to the residents of Ellsworth, Maine
-              </p>
-            </div>
-          </div>
-          <div className="content-homepage12334">
-            <div>
-              <img
-                style={{ maxWidth: "130px", width: "auto" }}
-                src="/HomePage/bottom image.png"
-                alt="image"
-              />
-            </div>
-            <div>
-              <p>18 August 2023</p>
-              <p style={{ fontWeight: "bold" }}>
-                Open letter to the residents of Ellsworth, Maine
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

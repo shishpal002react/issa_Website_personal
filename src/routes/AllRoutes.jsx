@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../pages/HomePage";
 import SupportPage from "../pages/SupportPage";
@@ -15,7 +14,7 @@ import Account from "../pages/Account";
 import BlogPage from "../pages/BlogPage";
 import SingleBlogPage from "../pages/SingleBlog";
 
-export const  AllRoutes = () => {
+export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -31,7 +30,7 @@ export const  AllRoutes = () => {
       />
       <Route path="/about/partners" element={<PartnerPage />} />
       <Route path="/resources" element={<ResourcesPage />} />
-      <Route path="/resources/blog" element={<BlogPage />} />
+      <Route path="/resources/blog/:id" element={<BlogPage />} />
       <Route path="/resources/blog/:blog" element={<SingleBlogPage />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/demo-request" element={<DemoPage />} />
