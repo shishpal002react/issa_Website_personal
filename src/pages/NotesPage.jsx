@@ -1,7 +1,39 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import "./css/NotesPage.css";
 import { Button, Form } from "react-bootstrap";
+import axios from "axios";
 const NotesPage = () => {
+  const [notes, setNotes] = useState([]);
+  const [contect, setContect] = useState("");
+
+  const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
+
+  const contectDetail = async () => {
+    try {
+      const res = await axios.get(
+        `${BaseUrl}ContactDetails/viewContactDetails`
+      );
+      setContect(res.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getSupportNotes = async () => {
+    try {
+      const res = await axios.get(
+        `${BaseUrl}OasisNotesSupport/getOasisNotesSupport`
+      );
+      setNotes(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getSupportNotes();
+    contectDetail();
+  }, []);
   return (
     <div className="support-page">
       <div
@@ -89,133 +121,32 @@ const NotesPage = () => {
               src="../../OasisNotesPage/call.png"
               alt="add"
             />
-            <p>1234567890</p>
+            <p>{contect?.supportPhone}</p>
           </div>
         </div>
       </div>
       <div className="notes-page-container2">
         <div className="notes-page-container21">
-          {" "}
-          <div
-            style={{
-              padding: "1rem",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-          >
-            <p
+          {notes?.map((item, i) => (
+            <div
+              key={i}
               style={{
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                paddingTop: "2.5rem",
+                padding: "1rem",
+                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
               }}
             >
-              Whet's New
-            </p>
-            <p style={{ paddingBottom: "3rem" }}>
-              This will have information on new and exiting updates to
-              OasisNotes!
-            </p>{" "}
-          </div>
-          <div
-            style={{
-              padding: "1rem",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-          >
-            <p
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                paddingTop: "2.5rem",
-              }}
-            >
-              Whet's New
-            </p>
-            <p style={{ paddingBottom: "3rem" }}>
-              This will have information on new and exiting updates to
-              OasisNotes!
-            </p>{" "}
-          </div>
-          <div
-            style={{
-              padding: "1rem",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-          >
-            <p
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                paddingTop: "2.5rem",
-              }}
-            >
-              Whet's New
-            </p>
-            <p style={{ paddingBottom: "3rem" }}>
-              This will have information on new and exiting updates to
-              OasisNotes!
-            </p>{" "}
-          </div>
-          <div
-            style={{
-              padding: "1rem",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-          >
-            <p
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                paddingTop: "2.5rem",
-              }}
-            >
-              Whet's New
-            </p>
-            <p style={{ paddingBottom: "3rem" }}>
-              This will have information on new and exiting updates to
-              OasisNotes!
-            </p>{" "}
-          </div>
-          <div
-            style={{
-              padding: "1rem",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-          >
-            <p
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                paddingTop: "2.5rem",
-              }}
-            >
-              Whet's New
-            </p>
-            <p style={{ paddingBottom: "3rem" }}>
-              This will have information on new and exiting updates to
-              OasisNotes!
-            </p>{" "}
-          </div>
-          <div
-            style={{
-              padding: "1rem",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-          >
-            <p
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                paddingTop: "2.5rem",
-              }}
-            >
-              Whet's New
-            </p>
-            <p style={{ paddingBottom: "3rem" }}>
-              This will have information on new and exiting updates to
-              OasisNotes!
-            </p>{" "}
-          </div>
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                  paddingTop: "2.5rem",
+                }}
+              >
+                {item?.title}
+              </p>
+              <p style={{ paddingBottom: "3rem" }}>{item?.description}</p>{" "}
+            </div>
+          ))}
         </div>
         <div style={{ marginTop: "2.5rem" }}>
           <p style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
@@ -239,7 +170,7 @@ const NotesPage = () => {
         }}
         className="support-page-container"
       >
-        <p>Contact Us :1234567890</p>
+        <p>Contact Us :{contect?.supportPhone}</p>
       </div>
       <div
         style={{
@@ -254,7 +185,6 @@ const NotesPage = () => {
         <p style={{ paddingTop: ".5rem" }}>
           @ 2023 Themes by Helpdesk Theme . All rights reserved
         </p>
-       
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
 import "./css/Support.css";
 import { useState, useEffect } from "react";
+import { Link } from "react";
 import axios from "axios";
 const SupportPage = () => {
   const [contect, setContect] = useState("");
+  const [question, setQuestion] = useState("");
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -17,8 +19,18 @@ const SupportPage = () => {
     }
   };
 
+  const questionAwnser = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}superAdmin/getAllFaq`);
+      setQuestion(res.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     contectDetail();
+    questionAwnser();
   }, []);
   return (
     <div className="support-page">
@@ -54,53 +66,26 @@ const SupportPage = () => {
             }}
           >
             {" "}
+            {question?.faq?.map((item, i) => (
+              <div key={i}>
+                <p
+                  style={{
+                    color: "#1A9FB2",
+                    marginTop: "1rem",
+                    borderTop: "1px solid black",
+                  }}
+                >
+                  {question?.title}
+                </p>
+
+                <p style={{ color: "#AF110C" }}>{item?.question}</p>
+                <p style={{ fontSize: "1rem" }}>{item?.answer}</p>
+                <hr style={{ width: "50%" }} />
+              </div>
+            ))}
             <div>
-              <p
-                style={{
-                  color: "#1A9FB2",
-                  marginTop: "1rem",
-                  borderTop: "1px solid black",
-                }}
-              >
-                OasisNotes Training and Implementation Process
-              </p>
-              <p style={{ color: "#AF110C" }}>
-                What are the OasisNotes hours of operation?
-              </p>
-              <p style={{ fontSize: "1rem" }}>
-                OasisNotes is located in Idaho and available for training and
-                support Monday through Friday, 8 am to 5 pm Mountain Time. An
-                after-hours number is available to call for emergencies.
-              </p>
-              <hr style={{ width: "50%" }} />
-            </div>
-            <div>
-              <p style={{ color: "#AF110C", marginTop: "1rem" }}>
-                What happens immediately after I subscribe?
-              </p>
-              <p style={{ fontSize: "1rem" }}>
-                Within the same or next business day, your company will be
-                emailed to schedule your first training. Zoom is used for
-                training sessions.
-              </p>
-              <hr style={{ width: "50%" }} />
-            </div>
-            <div>
-              <p style={{ color: "#AF110C" }}>
-                Who needs to attend the first training session?
-              </p>
-              <p style={{ fontSize: "1rem" }}>
-                Key decision makers, including the person acting as your main
-                system administrator, should attend. The training session
-                typically lasts 1 hour.
-              </p>
-              <hr style={{ width: "50%" }} />
-            </div>
-            <div>
-              <p style={{ color: "#1A9FB2" }}>
-                Non-Supported Operating Systems (OS) Minimum System Requirements
-                Minimum Hardware
-              </p>
+              <p style={{ color: "#1A9FB2" }}>{question?.description}</p>
+
               <button
                 style={{
                   fontSize: "1rem",
@@ -111,7 +96,12 @@ const SupportPage = () => {
                   borderRadius: "55px",
                 }}
               >
-                Click Here
+                <a
+                  href={question?.link}
+                  style={{ color: "white", borderBottom: "none" }}
+                >
+                  Click Here
+                </a>
               </button>
             </div>
           </div>

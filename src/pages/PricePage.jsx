@@ -4,6 +4,8 @@ import axios from "axios";
 
 const PricePage = () => {
   const [pricing, setPricing] = useState([]);
+  const [user, setUser] = useState("");
+  const [userData, setUserData] = useState(0);
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -11,7 +13,17 @@ const PricePage = () => {
     try {
       const res = await axios.get(`${BaseUrl}Pricing/getPricing`);
       setPricing(res?.data?.data);
-      console.log(res?.data?.data, "data is print");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUserPost = async () => {
+    try {
+      const res = await axios.post(`${BaseUrl}Pricing/calculatePricing`, {
+        noOfUser: user,
+      });
+      setUserData(res?.data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -162,7 +174,8 @@ const PricePage = () => {
               src="/PricingPage/users.png"
               alt=""
             />
-            <p
+            <input
+              type="text"
               style={{
                 border: "1px solid black",
                 minWidth: "140px",
@@ -172,10 +185,11 @@ const PricePage = () => {
                 height: "auto",
                 marginTop: "1rem",
                 textAlign: "center",
+                outline: "none",
               }}
-            >
-              1
-            </p>
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+            ></input>
           </div>
           <div
             style={{
@@ -196,7 +210,9 @@ const PricePage = () => {
                 border: "none",
                 borderRadius: "5px",
                 cursor: "pointer",
+                marginTop: "1.5rem",
               }}
+              onClick={getUserPost}
             >
               Calculate
             </button>
@@ -226,7 +242,7 @@ const PricePage = () => {
                 fontWeight: "bold",
               }}
             >
-              50000
+              {userData}
             </p>
           </div>
         </div>
