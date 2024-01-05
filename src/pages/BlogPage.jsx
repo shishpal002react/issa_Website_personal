@@ -63,7 +63,7 @@ const BlogPage = () => {
                   <span style={{ color: "#1A9FB2" }}>0 Comments</span>
                 </p>
                 <p>{item?.description}</p>
-                <p
+                {/* <p
                   onClick={() => navigate("/resources/blog/1")}
                   style={{
                     color: "#1A9FB2",
@@ -72,15 +72,15 @@ const BlogPage = () => {
                   }}
                 >
                   Read More
-                </p>
+                </p> */}
               </div>
             ))}
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <Stack spacing={2}>
-                {/* <Typography>Page: {page}</Typography> */}
+              {/* <Stack spacing={2}>
+               
                 <Pagination count={10} page={page} onChange={handleChange} />
-              </Stack>
+              </Stack> */}
             </div>
           </div>
           <div>

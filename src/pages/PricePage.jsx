@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import "./css/PricePage.css";
 import axios from "axios";
+import { get_PricingData } from "../Api_collection/Api.js";
+import Accordion from "react-bootstrap/Accordion";
 
 const PricePage = () => {
   const [pricing, setPricing] = useState([]);
   const [user, setUser] = useState("");
   const [userData, setUserData] = useState(0);
+  const [showFpq, setShowFpq] = useState(false);
+  const [fpq, setFpq] = useState("");
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -13,6 +17,15 @@ const PricePage = () => {
     try {
       const res = await axios.get(`${BaseUrl}Pricing/getPricing`);
       setPricing(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getPricingFpq = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}Pricing/getPricingFAQ`);
+      setFpq(res?.data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -30,8 +43,12 @@ const PricePage = () => {
   };
 
   useEffect(() => {
+    // setPricing(get_PricingData());
     getPricingData();
+    getPricingFpq();
   }, []);
+
+  console.log(pricing, "pricing data");
 
   const buttonStyle = {
     marginTop: "1rem",
@@ -58,7 +75,7 @@ const PricePage = () => {
             lineHeight: "2rem",
           }}
         >
-          Straightforward, Transparent Pricing: No Hidden Costs.
+          {fpq?.heading}
         </p>
         <div className="pricing-page-container2">
           {pricing?.map((item, i) => (
@@ -143,7 +160,29 @@ const PricePage = () => {
             marginBottom: "2rem",
           }}
         >
-          <button style={buttonStyle}>Billing FAQs</button>
+          <button style={buttonStyle} onClick={() => setShowFpq(!showFpq)}>
+            Billing FAQs
+          </button>
+          {showFpq && (
+            <div className="container d-flex justify-content-center align-items-center">
+              <div className="col-md-8">
+                {fpq?.faqs?.map((item, i) => (
+                  <Accordion defaultActiveKey="0" key={i}>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header style={{ fontSize: "14px" }}>
+                        {item?.question}
+                      </Accordion.Header>
+                      <Accordion.Body style={{ fontSize: "14px" }}>
+                        {" "}
+                        {item?.answer}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          )}
+
           <button style={buttonStyle}>
             Sales Tax May be Applicable for your State
           </button>
@@ -152,12 +191,10 @@ const PricePage = () => {
           <p
             style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#AF110C" }}
           >
-            Get Started with Our Cost Calculator
+            {fpq?.title}
           </p>
           <p style={{ fontSize: "1.2rem", textAlign: "center" }}>
-            Enter a number to increase or decrease the number of users you
-            need.The dynamic calculator will show the cost for the number of
-            users.
+            {fpq?.description}
           </p>
         </div>
         <div className="price-calculator-page">

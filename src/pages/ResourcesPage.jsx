@@ -120,10 +120,10 @@ const ResourcesPage = () => {
             </p>
             <div className="resources-page-container2111">
               <div className="resources-page-container21111">
-                <p>{mainBlog?.description}</p>
+                <p>{mainBlog?.description?.slice(0, 100)} ...</p>
                 <p>
                   <button
-                    onClick={() => navigate("/resources/blog")}
+                    onClick={() => navigate(`/resources/blogDescription`)}
                     style={{
                       backgroundColor: "#1C5877",
                       color: "white",

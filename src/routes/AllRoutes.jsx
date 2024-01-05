@@ -13,6 +13,7 @@ import NotesPage from "../pages/NotesPage";
 import Account from "../pages/Account";
 import BlogPage from "../pages/BlogPage";
 import SingleBlogPage from "../pages/SingleBlog";
+import BlogDescription from "../pages/BlogDescription";
 
 export const AllRoutes = () => {
   return (
@@ -32,6 +33,7 @@ export const AllRoutes = () => {
       <Route path="/resources" element={<ResourcesPage />} />
       <Route path="/resources/blog/:id" element={<BlogPage />} />
       <Route path="/resources/blog/:blog" element={<SingleBlogPage />} />
+      <Route path="/resources/blogDescription" element={<BlogDescription />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/demo-request" element={<DemoPage />} />
 
