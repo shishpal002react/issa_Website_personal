@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import "./css/HomePage.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   const [topBanner, setTopBanner] = useState("");
   const [bottomBanner, setBottomBanner] = useState("");
   const [about, setAbout] = useState("");
@@ -232,7 +234,7 @@ export const HomePage = () => {
                 fontSize: ".8rem",
               }}
             >
-              {about?.info?.map((item) => (
+              {about?.info?.slice(0, 4)?.map((item) => (
                 <>
                   <div
                     style={{
@@ -270,7 +272,9 @@ export const HomePage = () => {
                 backgroundColor: "#024064",
                 color: "white",
                 border: "none",
+                cursor: "pointer",
               }}
+              onClick={() => navigate("/all_about_information")}
             >
               More About Us
             </button>
@@ -393,14 +397,16 @@ export const HomePage = () => {
                 padding: ".5rem 1rem",
                 border: "1px dotted #1A9FB2",
                 fontWeight: "bold",
+                cursor: "pointer",
               }}
+              onClick={() => navigate("/all_news_information")}
             >
               Read All News
             </p>
           </div>
         </div>
         <div className="content-homepage123">
-          {news?.map((item, i) => (
+          {news?.slice(0, 4)?.map((item, i) => (
             <div className="content-homepage12334" key={i}>
               <div>
                 <img

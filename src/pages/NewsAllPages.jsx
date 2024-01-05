@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./css/BlogPage.css";
 import { Form } from "react-bootstrap";
-import Typography from "@mui/material/Typography";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import axios from "axios";
-const BlogPage = () => {
+
+const NewsAllPages = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
   const [page, setPage] = React.useState(1);
-  const [blog, setBlog] = useState([]);
+  const [news, setNews] = useState([]);
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -18,30 +15,29 @@ const BlogPage = () => {
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
-  const getCategoryData = async () => {
+  const getNewsData = async () => {
     try {
-      const res = await axios.get(
-        `${BaseUrl}Blog/getBlog?blogCategoryId=${id}`
-      );
-      setBlog(res?.data?.data);
+      const res = await axios.get(`${BaseUrl}News/getNews`);
+      setNews(res?.data?.data);
+      console.log(res.data.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getCategoryData();
+    getNewsData();
   }, []);
 
   return (
     <div className="support-page">
       <div className="support-page-container">
-        <p style={{ fontSize: "2.8rem", fontWeight: "900" }}>Our Blog</p>
+        <p style={{ fontSize: "2.8rem", fontWeight: "900" }}>Our News Page</p>
       </div>
       <div className="blog-page-container-rk">
         <div className="blog-page-container1">
           <div className="blog-page-container112">
-            {blog?.map((item, i) => (
+            {news?.map((item, i) => (
               <div className="blog-page-container11" key={i}>
                 <img src={item?.image} alt="Blog" />
                 <p
@@ -64,8 +60,8 @@ const BlogPage = () => {
                   {new Date(item?.createdAt).toLocaleDateString()} |{" "}
                   <span style={{ color: "#1A9FB2" }}>0 Comments</span>
                 </p>
-                <p>{item?.description.slice(0, 200)} ...</p>
-                <p
+                <p>{item?.description}</p>
+                {/* <p
                   onClick={() =>
                     navigate(`/resources/blog/description/${item?._id}`)
                   }
@@ -76,7 +72,7 @@ const BlogPage = () => {
                   }}
                 >
                   Read More
-                </p>
+                </p> */}
               </div>
             ))}
 
@@ -98,7 +94,10 @@ const BlogPage = () => {
               </Form.Label>
               <Form.Control type="email" />
             </Form.Group>
-
+            <p>
+              <span style={{ color: "red", marginTop: "1rem" }}>*</span> =
+              required field
+            </p>
             <button
               type="submit"
               style={{
@@ -120,4 +119,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default NewsAllPages;

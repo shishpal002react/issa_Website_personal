@@ -153,11 +153,9 @@ const NotesPage = () => {
             Recent articles
           </p>
           <p>
-            <li>Readmit a Client </li>{" "}
-            <li>parent-Guardian Portal demonstration </li>
-            <li>Adult Portal demonstration</li>
-            <li>OutcomeTools Demonstration (Video)</li>
-            <li>OasisNotes insurance billing and electronic claims review</li>
+            {notes?.slice(0, 5)?.map((item, i) => (
+              <li key={i}>{item?.title} </li>
+            ))}
           </p>
         </div>
       </div>

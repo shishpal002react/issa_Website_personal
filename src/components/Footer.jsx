@@ -101,8 +101,17 @@ export const Footer = () => {
             }}
           >
             <div>
-              “A Simple Story About The Doctorate Medical Center & Health Care
-              Foundation
+              <img
+                onClick={() => navigate("/")}
+                src="/logo.png"
+                alt="logo"
+                style={{
+                  height: "50px",
+                  maxWidth: "145px",
+                  width: "auto",
+                  cursor: "pointer",
+                }}
+              />
             </div>
           </div>
           <div style={{ width: "100%", margin: "auto" }}>

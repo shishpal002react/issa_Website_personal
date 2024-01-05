@@ -240,56 +240,66 @@ const DemoPage = () => {
                 flexWrap: "wrap",
               }}
             >
-              <img
-                style={{
-                  maxWidth: "45px",
-                  maxHeight: "45px",
-                  width: "auto",
-                  height: "auto",
-                }}
-                src="/DemoRequest/fb.png"
-                alt="facebook"
-              />
-              <img
-                style={{
-                  maxWidth: "45px",
-                  maxHeight: "45px",
-                  width: "auto",
-                  height: "auto",
-                }}
-                src="/DemoRequest/tw.png"
-                alt="facebook"
-              />
-              <img
-                style={{
-                  maxWidth: "45px",
-                  maxHeight: "45px",
-                  width: "auto",
-                  height: "auto",
-                }}
-                src="/DemoRequest/youtube.png"
-                alt="facebook"
-              />
-              <img
-                style={{
-                  maxWidth: "45px",
-                  maxHeight: "45px",
-                  width: "auto",
-                  height: "auto",
-                }}
-                src="/DemoRequest/in.png"
-                alt="facebook"
-              />
-              <img
-                style={{
-                  maxWidth: "45px",
-                  maxHeight: "45px",
-                  width: "auto",
-                  height: "auto",
-                }}
-                src="/DemoRequest/insta.png"
-                alt="facebook"
-              />
+              <a href={contect?.fb}>
+                <img
+                  style={{
+                    maxWidth: "45px",
+                    maxHeight: "45px",
+                    width: "auto",
+                    height: "auto",
+                  }}
+                  src="/DemoRequest/fb.png"
+                  alt="facebook"
+                />
+              </a>
+              <a href={contect?.twitter}>
+                <img
+                  style={{
+                    maxWidth: "45px",
+                    maxHeight: "45px",
+                    width: "auto",
+                    height: "auto",
+                  }}
+                  src="/DemoRequest/tw.png"
+                  alt="facebook"
+                />
+              </a>
+              <a href={contect?.youtube}>
+                <img
+                  style={{
+                    maxWidth: "45px",
+                    maxHeight: "45px",
+                    width: "auto",
+                    height: "auto",
+                  }}
+                  src="/DemoRequest/youtube.png"
+                  alt="facebook"
+                />
+              </a>
+              <a href={contect?.linkedIn}>
+                <img
+                  style={{
+                    maxWidth: "45px",
+                    maxHeight: "45px",
+                    width: "auto",
+                    height: "auto",
+                  }}
+                  src="/DemoRequest/in.png"
+                  alt="facebook"
+                />
+              </a>
+              <a href={contect?.instagram}>
+                <img
+                  style={{
+                    maxWidth: "45px",
+                    maxHeight: "45px",
+                    width: "auto",
+                    height: "auto",
+                  }}
+                  src="/DemoRequest/insta.png"
+                  alt="facebook"
+                />
+              </a>
             </p>
           </div>
         </div>

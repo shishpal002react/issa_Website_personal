@@ -143,8 +143,8 @@ const ContactUs = () => {
         <p>Intuitive, Accessible, Time-Saving</p>
         <p>
           {" "}
-          <span style={{ fontWeight: "normal" }}>ICANotes - the </span> only EHR
-          software that actually thinks like a clinician. 
+          <span style={{ fontWeight: "normal" }}>The </span> only EHR software
+          that actually thinks like a clinician.
         </p>
         <button
           style={{
@@ -155,6 +155,7 @@ const ContactUs = () => {
             fontWeight: "500",
             border: "none",
           }}
+          onClick={() => navigate("/demo-request")}
         >
           Free Trial
         </button>

@@ -1,13 +1,31 @@
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./css/SingleBlogPage.css";
 import { Form } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const SingleBlogPage = () => {
-  const navigate = useNavigate();
+  const { id } = useParams();
+  const [data, setData] = useState("");
+
+  const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
+
+  const getSingleBlogData = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}Blog/getIdBlog/${id}`);
+      setData(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getSingleBlogData();
+  }, []);
   return (
     <div>
       <div className="Single-blog-page-container">
         <div className="Single-blog-page-container-rk">
-          <img src="/Blog/pic.png" alt="Blog" />
+          <img src={data?.image} alt="Blog" />
           <p
             style={{
               fontWeight: "bold",
@@ -16,15 +34,10 @@ const SingleBlogPage = () => {
               marginTop: "1rem",
             }}
           >
-            Using Genetic Testing to Enhance Psychiatric Medication Selection
+            {data?.title}
           </p>
           <p style={{ fontSize: "1rem", lineHeight: "1rem", color: "#545454" }}>
-            Finding the optimal medication regimen for each patient often
-            involves trial and error. However, recent strides in genetics have
-            bestowed psychiatry with a potent tool — genetic testing — to
-            streamline this process. Let's dive into the application of genetic
-            testing in psychiatric medication choice and its profound potential
-            to transform treatment strategies.
+            {data?.description}
           </p>
           <p
             style={{
@@ -104,15 +117,15 @@ const SingleBlogPage = () => {
           </p>
           <p>
             The value of genetic testing becomes particularly evident in its
-            ability to guide treatment decisions in cases  that have
-            historically posed challenges. Individuals who exhibit treatment
-            resistance or severe side effects can benefit immensely from these
-            insights. Clinicians can identify genetic markers that may
-            contribute to poor medication response or adverse reactions,
-            enabling them to explore alternative treatment options more
-            efficiently. For patients with complex comorbidities, genetic
-            testing can elucidate potential interactions between different
-            medications, enhancing treatment planning and minimizing risks.
+            ability to guide treatment decisions in cases that have historically
+            posed challenges. Individuals who exhibit treatment resistance or
+            severe side effects can benefit immensely from these insights.
+            Clinicians can identify genetic markers that may contribute to poor
+            medication response or adverse reactions, enabling them to explore
+            alternative treatment options more efficiently. For patients with
+            complex comorbidities, genetic testing can elucidate potential
+            interactions between different medications, enhancing treatment
+            planning and minimizing risks.
           </p>
           <p
             style={{

@@ -9,6 +9,8 @@ const ResourcesPage = () => {
   const [blogNotes, setBlogNotes] = useState("");
   const [mainBlog, setMainBlog] = useState("");
   const [ebook, setEbook] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [showData, setShowData] = useState(false);
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -48,17 +50,27 @@ const ResourcesPage = () => {
     }
   };
 
+  const getPopulerData = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}Blog/getBlogPopular`);
+      setPopular(res?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getCategoryData();
     getBlogNotes();
     getMainNotes();
     getEbook();
+    getPopulerData();
   }, []);
 
   const onDownload = (pdfUrl) => {
     const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = "document.pdf";
+    link.download = "invoice.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -120,15 +132,16 @@ const ResourcesPage = () => {
             </p>
             <div className="resources-page-container2111">
               <div className="resources-page-container21111">
-                <p>{mainBlog?.description?.slice(0, 100)} ...</p>
+                <p>{mainBlog?.description}</p>
                 <p>
                   <button
-                    onClick={() => navigate(`/resources/blogDescription`)}
+                    onClick={() =>
+                      navigate(`/resources/blogDescription/all_Blog`)
+                    }
                     style={{
                       backgroundColor: "#1C5877",
                       color: "white",
                       fontSize: ".8rem",
-
                       border: "none",
                       borderRadius: "8px",
                       fontWeight: "bold",
@@ -205,68 +218,43 @@ const ResourcesPage = () => {
                     Explore Popular Posts
                   </p>
                   <div className="resources-page-container-rk">
-                    <div>
-                      <img
-                        src="/ResourcesPage/pic3.png"
-                        alt="image3"
-                        style={{
-                          width: "100%",
-                          height: "auto",
-                        }}
-                      />
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "1rem",
-                          color: "#32373A",
-                        }}
-                      >
-                        Guide to Creating Mental Health Treatment Plans
-                      </p>
-                      <button
-                        style={{
-                          backgroundColor: "#1C5877",
-                          color: "white",
-                          border: "none",
-                          borderRadius: "8px",
-                          fontWeight: "bold",
-                          padding: "0.5rem 1.5rem",
-                        }}
-                      >
-                        READ MORE
-                      </button>
-                    </div>
-                    <div>
-                      <img
-                        src="/ResourcesPage/pic3.png"
-                        alt="image3"
-                        style={{
-                          width: "100%",
-                          height: "auto",
-                        }}
-                      />
-                      <p
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "1rem",
-                          color: "#32373A",
-                        }}
-                      >
-                        Guide to Creating Mental Health Treatment Plans
-                      </p>
-                      <button
-                        style={{
-                          backgroundColor: "#1C5877",
-                          color: "white",
-                          border: "none",
-                          borderRadius: "8px",
-                          fontWeight: "bold",
-                          padding: "0.5rem 1.5rem",
-                        }}
-                      >
-                        READ MORE
-                      </button>
-                    </div>
+                    {popular?.map((item, i) => (
+                      <div key={i}>
+                        <img
+                          src={item?.image}
+                          alt="image3"
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                          }}
+                        />
+                        <p
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "1rem",
+                            color: "#32373A",
+                          }}
+                        >
+                          {showData
+                            ? item?.description
+                            : item?.description.slice(0, 100)}{" "}
+                          ...
+                        </p>
+                        <button
+                          style={{
+                            backgroundColor: "#1C5877",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "8px",
+                            fontWeight: "bold",
+                            padding: "0.5rem 1.5rem",
+                          }}
+                          onClick={() => setShowData(!showData)}
+                        >
+                          READ MORE
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <p
