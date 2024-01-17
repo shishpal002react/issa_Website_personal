@@ -47,16 +47,10 @@ const SupportPage = () => {
           </div>
           <div className="support-page-container211">
             <span>OasisNotes Support</span>
-            <span>
-              <img
-                style={{
-                  minWidth: "2rem",
-                  minHeight: "2rem",
-                }}
-                src="/SupportPage/notes.png"
-                alt="zoom"
-              />
-            </span>
+            <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
+            <div style={{padding: "10px", borderRadius:"18px",color:"white",cursor:"pointer", backgroundColor:"#1A9FB2", fontSize:"12px",width:"70%",textAlign:"center"}}>OasisNotes Support</div>
+            </div>
+           
           </div>
           <div
             className="support-page-container212"

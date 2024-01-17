@@ -106,7 +106,8 @@ export const Footer = () => {
                 src="/logo.png"
                 alt="logo"
                 style={{
-                  height: "50px",
+                  // minHeight: "100px",
+                  minWidth: "250px",
                   maxWidth: "145px",
                   width: "auto",
                   cursor: "pointer",

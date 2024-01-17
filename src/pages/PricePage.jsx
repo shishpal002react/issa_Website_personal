@@ -147,10 +147,13 @@ const PricePage = () => {
             flexWrap: "wrap",
           }}
         >
+          <p>Unlimited User (You can add unlimited BHT's, Nurses, Behavioral Health Professionals, and other contractors)  </p>
           <p>Unlimited Data</p>
-          <p>Month to Month contract</p>
-          <p>No Upfront Fees</p>
-          <p style={{ paddingRight: "4.2%" }}>Unlimited Training / Support</p>
+          <p>Unilimited Training/ Support</p>
+          <p>Tracking Tools for Residents and employee's</p>
+          <p style={{ paddingRight: "2%" }}>Appointment Tracking and reminder</p>
+          <p>Medication Administration Record</p>
+          <p>Administration Tracking</p>
         </div>
         <div
           style={{
@@ -205,7 +208,7 @@ const PricePage = () => {
               alignItems: "center",
             }}
           >
-            <p>Number of Useres</p>
+            <p>Number of User</p>
             <img
               style={{ width: "45px" }}
               src="/PricingPage/users.png"

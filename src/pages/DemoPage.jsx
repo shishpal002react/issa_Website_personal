@@ -17,6 +17,9 @@ const DemoPage = () => {
   const [timeZones, setTimeZones] = useState([]);
   const [contect, setContect] = useState([]);
 
+  //erroe state
+  const [nameError, setNameError] = useState('');
+
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
   const data = {
@@ -95,8 +98,11 @@ const DemoPage = () => {
               <Form.Control
                 className="border border-dark"
                 type="text"
+                required
+                isInvalid={nameError!==''}
                 value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
+                onChange={(e) => {setCompanyName(e.target.value);
+                  setNameError(e.target.value===''?"Company Name is Required":'')}}
               />
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
@@ -104,6 +110,7 @@ const DemoPage = () => {
               <Form.Control
                 className="border border-dark"
                 type="text"
+                required
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -113,6 +120,7 @@ const DemoPage = () => {
               <Form.Control
                 className="border border-dark"
                 type="text"
+                required
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -122,6 +130,7 @@ const DemoPage = () => {
               <Form.Select
                 onChange={(e) => timeHandler(e)}
                 className="border border-dark"
+                required
               >
                 <option>Select</option>
                 {timeZones.map((zone, index) => (
@@ -136,8 +145,9 @@ const DemoPage = () => {
               <Form.Label>Email*</Form.Label>
               <Form.Control
                 className="border border-dark"
-                type="text"
+                type="email"
                 value={email}
+                required
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
@@ -145,8 +155,9 @@ const DemoPage = () => {
               <Form.Label>Phone Number*</Form.Label>
               <Form.Control
                 className="border border-dark"
-                type="text"
+                type="number"
                 value={phoneNumber}
+                required
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </Form.Group>
@@ -155,6 +166,7 @@ const DemoPage = () => {
               <Form.Control
                 className="border border-dark"
                 type="text"
+                required
                 value={hearAboutUs}
                 onChange={(e) => setHearAboutUs(e.target.value)}
               />
@@ -168,6 +180,7 @@ const DemoPage = () => {
                 as="textarea"
                 rows={3}
                 value={describe}
+                
                 onChange={(e) => setDescribe(e.target.value)}
               />
             </Form.Group>

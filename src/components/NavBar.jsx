@@ -22,12 +22,7 @@ export const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
-            <Nav.Link
-                  style={{ color: "#1A9FB2", fontWeight: "600" }}
-                  
-                >
-                  Tele Health comming soon
-                </Nav.Link>
+            
             <Nav>
               <Nav className="me-auto">
                 <NavDropdown
