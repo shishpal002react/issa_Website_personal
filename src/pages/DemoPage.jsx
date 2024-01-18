@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import moment from "moment-timezone";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {show_notification} from '../Api_collection/Api'
 
 const DemoPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -35,12 +36,19 @@ const DemoPage = () => {
 
   const handleData = async (e) => {
     e.preventDefault();
+// let boss=Object.keys(data).filter(key=>Object[key]=="").length>0
+//     if(boss){
+
+//       Showmsg (`${boss.join(",")}`)
+//       return 
+//     }
 
     try {
       const response = await axios.post(
         `${BaseUrl}DemoRequest/createDemoRequest`,
         data
       );
+      show_notification("Form Submit Successfully !",response?.data?.message,"success")
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -99,7 +107,7 @@ const DemoPage = () => {
                 className="border border-dark"
                 type="text"
                 required
-                isInvalid={nameError!==''}
+                
                 value={companyName}
                 onChange={(e) => {setCompanyName(e.target.value);
                   setNameError(e.target.value===''?"Company Name is Required":'')}}
