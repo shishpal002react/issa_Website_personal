@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 import moment from "moment-timezone";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {show_notification} from '../Api_collection/Api'
+import { show_notification } from '../Api_collection/Api';
 
 const DemoPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -18,7 +18,14 @@ const DemoPage = () => {
   const [timeZones, setTimeZones] = useState([]);
   const [contect, setContect] = useState([]);
 
-
+  // Error
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError,setLastNameError]=useState("");
+  const [compantNameError,setCompanyNameError]=useState("");
+  const [emailError,setEmailError]=useState("");
+  const [phoneNumberError,setPhoneNumberError]=useState("");
+  const [hearAboutUsError,setHearAboutUsError]=useState("");
+ 
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -35,24 +42,62 @@ const DemoPage = () => {
 
   const handleData = async (e) => {
     e.preventDefault();
-// let boss=Object.keys(data).filter(key=>Object[key]=="").length>0
-//     if(boss){
 
-//       Showmsg (`${boss.join(",")}`)
-//       return 
-//     }
+    if (!validateForm()) {
+      return;
+    }
+
+    const validateForm = () => {
+      // Validate Company Name
+      if (companyName.trim() === "") {
+        setCompanyNameError("Company Name is required");
+        return false;
+      }
+      if (firstName.trim() === "") {
+        setFirstNameError("First name is required");
+        return false;
+      }
+      if (lastNameError.trim() === "") {
+        setLastNameError("Last is required");
+        return false;
+      }
+      if (email.trim() === "") {
+        setEmailError("Email is required");
+        return false;
+      }
+      if (phoneNumber.trim() === "") {
+        setPhoneNumberError("Phone number is required");
+        return false;
+      }
+      if (hearAboutUs.trim() === "") {
+        setHearAboutUsError("This is a required");
+        return false;
+      }
+      
+  
+      setCompanyNameError('');
+      setFirstNameError("");
+      setLastNameError("");
+      setEmailError("");
+      setPhoneNumberError("");
+      setHearAboutUsError("");
+  
+      return true;
+    };
 
     try {
       const response = await axios.post(
         `${BaseUrl}DemoRequest/createDemoRequest`,
         data
       );
-      show_notification("Form Submit Successfully !",response?.data?.message,"success")
+      show_notification("Form Submit Successfully!", response?.data?.message, "success");
       navigate("/");
     } catch (error) {
-      show_notification("Something is Wrong!",error?.response?.data?.message,"danger")
+      show_notification("Something is Wrong!", error?.response?.data?.message, "danger");
     }
   };
+
+
 
   const contectData = async () => {
     try {
@@ -80,6 +125,7 @@ const DemoPage = () => {
     const selectedTimezone = e.target.value;
     setTimeZone(moment().tz(selectedTimezone).format("h:mm A"));
   };
+
   return (
     <div className="support-page">
       <div className="support-page-container">
@@ -106,11 +152,14 @@ const DemoPage = () => {
                 className="border border-dark"
                 type="text"
                 required
-                
                 value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)
-                 }
+                onChange={(e) => {
+                  setCompanyName(e.target.value);
+                  setCompanyNameError(e.target.value.trim() === "" ? "Company Name is Required" : "");
+                }}
               />
+              {compantNameError && <Form.Text className="text-danger">{compantNameError}</Form.Text>}
+              
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
               <Form.Label>Primary Contact - First Name*</Form.Label>
@@ -119,8 +168,10 @@ const DemoPage = () => {
                 type="text"
                 required
                 value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={(e) => {setFirstName(e.target.value);
+                  setFirstNameError(e.target.value.trim() === "" ? "First Name is Required" : "")}}
               />
+              {firstNameError && <Form.Text className="text-danger">{firstNameError}</Form.Text>}
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
               <Form.Label>Primary Contact - Last Name*</Form.Label>
@@ -129,8 +180,10 @@ const DemoPage = () => {
                 type="text"
                 required
                 value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                onChange={(e) => {setLastName(e.target.value);
+                  setLastNameError(e.target.value.trim() === "" ? "Last Name is Required" : "")}}
               />
+              {lastNameError && <Form.Text className="text-danger">{lastNameError}</Form.Text>}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Time Zone*</Form.Label>
@@ -155,8 +208,10 @@ const DemoPage = () => {
                 type="email"
                 value={email}
                 required
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {setEmail(e.target.value);
+                  setEmailError(e.target.value.trim() === "" ? "Email Name is Required" : "")}}
               />
+              {emailError && <Form.Text className="text-danger">{emailError}</Form.Text>}
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
               <Form.Label>Phone Number*</Form.Label>
@@ -165,8 +220,10 @@ const DemoPage = () => {
                 type="number"
                 value={phoneNumber}
                 required
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={(e) => {setPhoneNumber(e.target.value);
+                setPhoneNumberError(e.target.value.trim() === "" ? "Phone Number is Required" : "")}}
               />
+              {phoneNumberError && <Form.Text className="text-danger">{phoneNumberError}</Form.Text>}
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
               <Form.Label>How did you hear about us?*</Form.Label>
@@ -175,8 +232,10 @@ const DemoPage = () => {
                 type="text"
                 required
                 value={hearAboutUs}
-                onChange={(e) => setHearAboutUs(e.target.value)}
+                onChange={(e) => {setHearAboutUs(e.target.value);
+                  setHearAboutUsError(e.target.value.trim() === "" ? "This is a Required" : "")}}
               />
+              {hearAboutUsError && <Form.Text className="text-danger">{hearAboutUsError}</Form.Text>}
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
               <Form.Label>
@@ -187,7 +246,6 @@ const DemoPage = () => {
                 as="textarea"
                 rows={3}
                 value={describe}
-                
                 onChange={(e) => setDescribe(e.target.value)}
               />
             </Form.Group>
@@ -228,7 +286,7 @@ const DemoPage = () => {
               Contact Information
             </p>
             <p style={{ fontWeight: "bold" }}>
-              For more information ot to request a demo please contact us.
+              For more information or to request a demo, please contact us.
             </p>
             <p style={{ color: "#0152A8", textDecoration: "underline" }}>
               {contect?.saleEmail}
