@@ -12,11 +12,14 @@ function App() {
   }, [location]);
   return (
     <>
-      {location.pathname !== "/support-account-management" && <NavBar />}
+      {/* {location.pathname !== "/support-account-management" && <NavBar />}
       <AllRoutes />
       {location.pathname !== "/support-notes" &&
-        location.pathname !== "/support-account-management" && <Footer />}
+        location.pathname !== "/support-account-management" && <Footer />} */}
       {/* <Footer /> */}
+      <NavBar />
+      <AllRoutes />
+      <Footer />
     </>
   );
 }

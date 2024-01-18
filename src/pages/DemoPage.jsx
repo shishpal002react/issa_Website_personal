@@ -18,8 +18,7 @@ const DemoPage = () => {
   const [timeZones, setTimeZones] = useState([]);
   const [contect, setContect] = useState([]);
 
-  //erroe state
-  const [nameError, setNameError] = useState('');
+
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -51,7 +50,7 @@ const DemoPage = () => {
       show_notification("Form Submit Successfully !",response?.data?.message,"success")
       navigate("/");
     } catch (error) {
-      console.log(error.message);
+      show_notification("Something is Wrong!",error?.response?.data?.message,"danger")
     }
   };
 
@@ -109,8 +108,8 @@ const DemoPage = () => {
                 required
                 
                 value={companyName}
-                onChange={(e) => {setCompanyName(e.target.value);
-                  setNameError(e.target.value===''?"Company Name is Required":'')}}
+                onChange={(e) => setCompanyName(e.target.value)
+                 }
               />
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">

@@ -3,6 +3,7 @@ import "./css/DownloadPage.css";
 import axios from "axios";
 const DownloadPage = () => {
   const [contect, setContect] = useState("");
+  const [data,setDate]=useState("")
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -17,8 +18,20 @@ const DownloadPage = () => {
     }
   };
 
+  const Download_logo = async () => {
+    try {
+      const response = await axios.get(
+        `${BaseUrl}DownloadPage/getDownloadPage`
+      );
+      setDate(response?.data?.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
     contectDetail();
+    Download_logo();
   }, []);
   return (
     <div className="support-page">
@@ -60,6 +73,7 @@ const DownloadPage = () => {
                   flexWrap: "wrap",
                 }}
               >
+                <a href={data?.window}>
                 <img
                   style={{
                     maxWidth: "100px",
@@ -70,6 +84,8 @@ const DownloadPage = () => {
                   src="/Downloadpage/windows.png"
                   alt="windows"
                 />
+                </a>
+                <a href={data?.mac}>
                 <img
                   style={{
                     maxWidth: "100px",
@@ -80,6 +96,7 @@ const DownloadPage = () => {
                   src="/Downloadpage/macos.png"
                   alt="windows"
                 />
+                </a>
               </p>
             </div>
             <div
@@ -102,6 +119,7 @@ const DownloadPage = () => {
                   flexWrap: "wrap",
                 }}
               >
+                 <a href={data?.android}>
                 <img
                   style={{
                     maxWidth: "100px",
@@ -112,6 +130,8 @@ const DownloadPage = () => {
                   src="/Downloadpage/android.png"
                   alt="windows"
                 />
+                </a>
+                 <a href={data?.ios}>
                 <img
                   style={{
                     maxWidth: "100px",
@@ -122,6 +142,7 @@ const DownloadPage = () => {
                   src="/Downloadpage/ios.png"
                   alt="windows"
                 />
+                </a>
               </p>
             </div>
           </div>
