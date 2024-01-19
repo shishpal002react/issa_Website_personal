@@ -9,12 +9,14 @@
 }
 
 .account-page-container {
-    display: grid;
-
-    margin: "auto";
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* margin: "auto"; */
+    /* grid-template-columns: repeat(1, 1fr); */
     text-align: center;
     font-weight: bold;
+    margin-bottom: 5%;
 
     @media screen and (max-width: 768px) {
         grid-template-columns: repeat(1, 1fr);

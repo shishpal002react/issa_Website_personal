@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/Account.css";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 const Account = () => {
   const navigate = useNavigate();
+  const [user,setUser]=useState("");
+  const [password,setPassword]=useState("")
+
+  const handleSubmit=(e)=>{
+    const data={
+      email:user,
+      password:password
+    }
+    e.preventDefault();
+  }
+
+
   return (
     <div>
       <div className="account-page-container1">
@@ -48,6 +60,7 @@ const Account = () => {
                   padding: "0.2rem",
                   textAlign: "right",
                   padddingRight: "3rem",
+                 
                 }}
               >
                 Login to existing account:
@@ -57,6 +70,7 @@ const Account = () => {
                 style={{
                   padding: "1rem",
                 }}
+                onSubmit={handleSubmit}
               >
                 <Form.Group
                   style={{
@@ -78,6 +92,8 @@ const Account = () => {
                       border: "1px solid black",
                     }}
                     type="email"
+                    value={setUser}
+                    onChange={(e)=>setUser(e.target.value)}
                   />
                 </Form.Group>
                 <Form.Group
@@ -106,7 +122,7 @@ const Account = () => {
                   }}
                 >
                   <Button
-                    onClick={() => navigate("/")}
+                    // onClick={() => navigate("/")}
                     style={{
                       padding: "0.5rem 1.5rem",
                       marginTop: "1rem",
@@ -120,8 +136,8 @@ const Account = () => {
                 </div>
               </Form>
             </div>
-            <div
-              style={{ border: "1px solid black", backgroundColor: "white" }}
+            {/* <div
+              style={{ border: "1px solid black", backgroundColor: "white",visibility:"hidden" }}
             >
               <Form
                 style={{
@@ -188,7 +204,7 @@ const Account = () => {
               >
                 Request for Demo
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
         <p style={{ fontWeight: "900", fontSize: "1.2rem" }}>

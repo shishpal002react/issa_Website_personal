@@ -128,12 +128,17 @@ const PricePage = () => {
                   >
                     PER MONTH
                   </p>
+                  {
+                    item?.details?.map((data,i)=>(
+                      <p key={i}>{data}</p>
+                    ))
+                  }
                 </div>
               </div>
             </>
           ))}
         </div>
-        <div
+        {/* <div
           style={{
             width: "78%",
             margin: "auto",
@@ -154,7 +159,7 @@ const PricePage = () => {
           <p style={{ paddingRight: "2%" }}>Appointment Tracking and reminder</p>
           <p>Medication Administration Record</p>
           <p>Administration Tracking</p>
-        </div>
+        </div> */}
         <div
           style={{
             display: "flex",
@@ -186,9 +191,9 @@ const PricePage = () => {
             </div>
           )}
 
-          <button style={buttonStyle}>
+          {/* <button style={buttonStyle}>
             Sales Tax May be Applicable for your State
-          </button>
+          </button> */}
         </div>
         <div style={{ width: "60%", margin: "auto", textAlign: "center" }}>
           <p
