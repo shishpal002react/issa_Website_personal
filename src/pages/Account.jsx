@@ -4,15 +4,17 @@ import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 const Account = () => {
   const navigate = useNavigate();
+
   const [user,setUser]=useState("");
   const [password,setPassword]=useState("")
 
   const handleSubmit=(e)=>{
+    e.preventDefault();
     const data={
       email:user,
       password:password
     }
-    e.preventDefault();
+
   }
 
 
@@ -92,7 +94,7 @@ const Account = () => {
                       border: "1px solid black",
                     }}
                     type="email"
-                    value={setUser}
+                    value={user}
                     onChange={(e)=>setUser(e.target.value)}
                   />
                 </Form.Group>
@@ -111,7 +113,9 @@ const Account = () => {
                       backgroundColor: "#D1ECF0",
                       border: "1px solid black",
                     }}
-                    type="email"
+                    type="password"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                 </Form.Group>
                 <div

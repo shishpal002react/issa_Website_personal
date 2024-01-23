@@ -55,10 +55,11 @@ export const NavBar = () => {
                   className="custom-dropdown-title"
                 >
                   <NavDropdown.Item href="/about/clinical-advisors">
-                    Clinical Advisors
+                  OasisNotes
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/about/partners">
-                    Partners
+                  {/* href="/about/partners" */}
+                  <NavDropdown.Item >
+                    Partners comming soon
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link

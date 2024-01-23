@@ -131,7 +131,9 @@ const ContactUs = () => {
                   color: "white",
                   fontWeight: "500",
                   border: "none",
+                  cursor:"pointer"
                 }}
+                onClick={()=>navigate("/resources")}
               >
                 Access Other Support Resources
               </button>

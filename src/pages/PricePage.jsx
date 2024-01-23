@@ -48,7 +48,7 @@ const PricePage = () => {
     getPricingFpq();
   }, []);
 
-  console.log(pricing, "pricing data");
+
 
   const buttonStyle = {
     marginTop: "1rem",
@@ -100,7 +100,7 @@ const PricePage = () => {
                     fontWeight: "500",
                   }}
                 >
-                  Each User: {item?.till}
+                  User {item?.till}
                   {/* Each User: 1-10 */}
                 </p>
                 <div

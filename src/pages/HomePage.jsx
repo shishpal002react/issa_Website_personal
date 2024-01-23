@@ -109,7 +109,7 @@ export const HomePage = () => {
             {/* Our team of highly trained professionals uses the latest healing
             technologies to restore you to pain-free health quickly and easily. */}
           </p>
-          <button
+          {/* <button
             style={{
               padding: "0.5rem 1.5rem",
               backgroundColor: "#024064",
@@ -119,7 +119,7 @@ export const HomePage = () => {
             }}
           >
             Get Started
-          </button>
+          </button> */}
         </div>
       </div>
       <p
@@ -311,7 +311,7 @@ export const HomePage = () => {
             </>
           ))}
 
-          <button
+          {/* <button
             style={{
               padding: "0.5rem 1.5rem",
               backgroundColor: "#1A9FB2",
@@ -320,7 +320,7 @@ export const HomePage = () => {
             }}
           >
             Discover Now
-          </button>
+          </button> */}
         </div>
         <div
           style={{
