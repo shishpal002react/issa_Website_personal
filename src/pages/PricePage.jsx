@@ -10,6 +10,7 @@ const PricePage = () => {
   const [userData, setUserData] = useState(0);
   const [showFpq, setShowFpq] = useState(false);
   const [fpq, setFpq] = useState("");
+  const [view,setView]=useState("");
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -77,6 +78,7 @@ const PricePage = () => {
         >
           {fpq?.heading}
         </p>
+        
         <div className="pricing-page-container2">
           {pricing?.map((item, i) => (
             <>
@@ -128,11 +130,19 @@ const PricePage = () => {
                   >
                     PER MONTH
                   </p>
-                  {
-                    item?.details?.map((data,i)=>(
-                      <p key={i}>{data}</p>
-                    ))
-                  }
+
+                  <p style={{color: "#1A9FB2",alignItems:"center",marginTop:"1rem",cursor:"pointer"}} onClick={()=>
+                  view === item._id ?
+                  setView('') : setView(item._id)}
+                  
+                  >View more</p>
+                
+                { view === item._id &&
+                  item?.details?.map((data,i)=>(
+                    <p key={i} style={{textAlign:"center"}}>{data}</p>
+                  ))
+                }
+                
                 </div>
               </div>
             </>
