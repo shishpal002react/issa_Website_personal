@@ -11,7 +11,7 @@ function SuccessPaymentPage() {
     useEffect( async()=>{
         try {
             const res = await axios.post(`${BaseUrl}verifySubscription/${id}`,{
-                Status: Paid
+                Status:"Paid"
             });
             show_notification("payment success !","Payment Succesfull","success")
             navigate("/")

@@ -9,7 +9,7 @@ function FailPaymentPage() {
     useEffect( async()=>{
         try {
             const res = await axios.post(`${BaseUrl}verifySubscription/${id}`,{
-                Status: Paid
+                Status:"Fail"
             });
             show_notification("payment Fail !","Payment Fail","danger")
             navigate("/")
