@@ -4,13 +4,13 @@ import { useNavigate,useParams } from 'react-router-dom';
 
 function SuccessPaymentPage() {
     const navigate=useNavigate();
-    const { userId } = useParams();
+    const { id } = useParams();
 
     const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
     useEffect( async()=>{
         try {
-            const res = await axios.post(`${BaseUrl}verifySubscription/${userId}`,{
+            const res = await axios.post(`${BaseUrl}verifySubscription/${id}`,{
                 Status: Paid
             });
             show_notification("payment success !","Payment Succesfull","success")

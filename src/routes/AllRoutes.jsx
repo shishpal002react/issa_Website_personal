@@ -50,7 +50,7 @@ export const AllRoutes = () => {
       <Route path="/demo-request" element={<DemoPage />} />
 
       {/* [payment] */}
-      <Route path="/paymet-successfull" element={<SuccessPaymentPage />} />
+      <Route path="/paymet-successfull/:id" element={<SuccessPaymentPage />} />
       <Route path="/paymet-fail" element={<FailPaymentPage />} />
 
       {/* Not Found */}
