@@ -51,7 +51,7 @@ export const AllRoutes = () => {
 
       {/* [payment] */}
       <Route path="/paymet-successfull/:id" element={<SuccessPaymentPage />} />
-      <Route path="/paymet-fail" element={<FailPaymentPage />} />
+      <Route path="/paymet-failed/:id" element={<FailPaymentPage />} />
 
       {/* Not Found */}
       <Route path="*" element={<h1>404 Page Not Found</h1>} />

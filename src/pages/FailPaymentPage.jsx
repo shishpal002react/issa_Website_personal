@@ -5,10 +5,17 @@ import { useNavigate } from 'react-router-dom';
 function FailPaymentPage() {
     const navigate=useNavigate();
 
+
     useEffect( async()=>{
+        try {
+            const res = await axios.post(`${BaseUrl}verifySubscription/${id}`,{
+                Status: Paid
+            });
             show_notification("payment Fail !","Payment Fail","danger")
             navigate("/")
-         
+          } catch (error) {
+            show_notification("payment Fail !","Something wrong","danger")
+          }
     },[])
 
   return (
