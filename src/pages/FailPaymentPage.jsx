@@ -6,7 +6,7 @@ function FailPaymentPage() {
     const navigate=useNavigate();
 
     useEffect( async()=>{
-            show_notification("payment Fail !","Payment Fail","fail")
+            show_notification("payment Fail !","Payment Fail","danger")
             navigate("/")
          
     },[])
