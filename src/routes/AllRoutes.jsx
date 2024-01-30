@@ -16,6 +16,8 @@ import SingleBlogPage from "../pages/SingleBlog";
 import BlogDescription from "../pages/BlogDescription";
 import NewsAllPages from "../pages/NewsAllPages";
 import AllAboutuspage from "../pages/AllAboutuspage";
+import SuccessPaymentPage from "../pages/SuccessPaymentPage";
+import FailPaymentPage from "../pages/FailPaymentPage";
 
 export const AllRoutes = () => {
   return (
@@ -46,6 +48,10 @@ export const AllRoutes = () => {
       />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/demo-request" element={<DemoPage />} />
+
+      {/* [payment] */}
+      <Route path="/paymet-successfull" element={<SuccessPaymentPage />} />
+      <Route path="/paymet-fail" element={<FailPaymentPage />} />
 
       {/* Not Found */}
       <Route path="*" element={<h1>404 Page Not Found</h1>} />

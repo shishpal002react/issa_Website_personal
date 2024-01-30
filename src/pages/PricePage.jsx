@@ -4,13 +4,79 @@ import axios from "axios";
 import { get_PricingData } from "../Api_collection/Api.js";
 import Accordion from "react-bootstrap/Accordion";
 
+// payment gateway
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Form from 'react-bootstrap/Form';
+
+function MyVerticallyCenteredModal(props) {
+  const [email,setEmail]=useState("")
+  const [subscriptionId,setSubscriptionId]=useState("");
+
+  const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
+
+  useEffect(()=>{
+    if(props.show===true){
+      setSubscriptionId(props.subscriptionId);
+    }
+  })
+
+  const handlePost=async(e)=>{
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(`${BaseUrl}takeSubscription/${subscriptionId}`,{
+        email
+      });
+      console.log(res,"payment data")
+      window.location.href=res.data.session.url;
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Payment Information
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <Form onSubmit={handlePost}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label style={{fontSize:"1rem"}}>Email address</Form.Label>
+        <Form.Control type="email"  placeholder="Enter email" required value={email} onChange={(e)=>setEmail(e.target.value)}/>
+      </Form.Group>
+      <Button variant="primary" type="submit" style={{marginTop:"1.5rem"}}>
+        Submit
+      </Button>
+    </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 const PricePage = () => {
+  // model
+  const [modalShow, setModalShow] = useState(false);
+  const [subscriptionId,setSubscriptionId]=useState("");
+
   const [pricing, setPricing] = useState([]);
   const [user, setUser] = useState("");
   const [userData, setUserData] = useState(0);
   const [showFpq, setShowFpq] = useState(false);
   const [fpq, setFpq] = useState("");
-  const [view,setView]=useState("");
+  const [view, setView] = useState("");
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
@@ -49,8 +115,6 @@ const PricePage = () => {
     getPricingFpq();
   }, []);
 
-
-
   const buttonStyle = {
     marginTop: "1rem",
     marginBottom: "1rem",
@@ -78,7 +142,7 @@ const PricePage = () => {
         >
           {fpq?.heading}
         </p>
-        
+
         <div className="pricing-page-container2">
           {pricing?.map((item, i) => (
             <>
@@ -86,9 +150,10 @@ const PricePage = () => {
                 key={i}
                 style={{
                   border: "1px solid grey",
-                  maxWidth: "300px",
+                  // maxWidth: "300px",
                   // maxHeight: "180px",
-                  width: "auto",
+                  gap: "10px",
+                  width: "100%",
                   height: "auto",
                   marginBottom: "1rem",
                 }}
@@ -100,6 +165,7 @@ const PricePage = () => {
                     color: "white",
                     padding: "1rem",
                     fontWeight: "500",
+                    fontSize: "1.5rem",
                   }}
                 >
                   User {item?.till}
@@ -113,7 +179,7 @@ const PricePage = () => {
                 >
                   <p
                     style={{
-                      fontSize: "1.5rem",
+                      fontSize: "1.3rem",
                       color: "#1A9FB2",
                       lineHeight: "1rem",
                       marginTop: "1rem",
@@ -131,18 +197,54 @@ const PricePage = () => {
                     PER MONTH
                   </p>
 
-                  <p style={{color: "#1A9FB2",alignItems:"center",marginTop:"1rem",cursor:"pointer"}} onClick={()=>
-                  view === item._id ?
-                  setView('') : setView(item._id)}
-                  
-                  >View more</p>
-                
-                { view === item._id &&
-                  item?.details?.map((data,i)=>(
-                    <p key={i} style={{textAlign:"center"}}>{data}</p>
-                  ))
-                }
-                
+                  <button
+                    style={{
+                      alignItems: "center",
+                      marginTop: "1rem",
+                      cursor: "pointer",
+                      backgroundColor: "#1A9FB2",
+                      outline: "none",
+                      padding: "10px",
+                      border: "none",
+                      borderRadius: "5px",
+                      minWidth: "40%",
+                    }}
+                    onClick={() => {
+                      setModalShow(true);
+                      setSubscriptionId(item._id)
+                    }}
+                  >
+                    Subscribe Now
+                  </button>
+
+                  <p
+                    style={{
+                      color: "#1A9FB2",
+                      alignItems: "center",
+                      marginTop: "1rem",
+                      cursor: "pointer",
+                    }}
+                    onClick={() =>
+                      view === item._id ? setView("") : setView(item._id)
+                    }
+                  >
+                    View more
+                  </p>
+
+                  {view === item._id &&
+                    item?.details?.map((data, i) => (
+                      <p
+                        key={i}
+                        style={{
+                          textAlign: "center",
+                          width: "90%",
+                          margin: "auto",
+                          paddingBottom: "1.5rem",
+                        }}
+                      >
+                        {data}
+                      </p>
+                    ))}
                 </div>
               </div>
             </>
@@ -201,9 +303,7 @@ const PricePage = () => {
             </div>
           )}
 
-          {/* <button style={buttonStyle}>
-            Sales Tax May be Applicable for your State
-          </button> */}
+     
         </div>
         <div style={{ width: "60%", margin: "auto", textAlign: "center" }}>
           <p
@@ -254,7 +354,7 @@ const PricePage = () => {
               marginBottom: "1rem",
             }}
           >
-            {/* <p></p> */}
+      
             <button
               style={{
                 fontSize: "1.2rem",
@@ -302,6 +402,11 @@ const PricePage = () => {
           </div>
         </div>
       </div>
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        subscriptionId={subscriptionId}
+      />
     </div>
   );
 };
