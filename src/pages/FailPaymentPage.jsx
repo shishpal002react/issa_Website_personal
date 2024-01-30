@@ -11,10 +11,10 @@ function FailPaymentPage() {
             const res = await axios.post(`${BaseUrl}verifySubscription/${id}`,{
                 Status:"Fail"
             });
-            show_notification("payment Fail !","Payment Fail","danger")
-            navigate("/")
-          } catch (error) {
-            show_notification("payment Fail !","Something wrong","danger")
+            show_notification("payment Fail !","Payment Fail","danger");
+            navigate("/pricing");
+          } catch (e) {
+            
           }
     },[])
 
