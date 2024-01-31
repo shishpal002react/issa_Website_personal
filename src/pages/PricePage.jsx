@@ -44,9 +44,25 @@ function MyVerticallyCenteredModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Payment Information
-        </Modal.Title>
+      <Modal.Title id="contained-modal-title-vcenter" style={{ display: "flex", alignItems: "center", justifyContent: "center",width:"100%" }}>
+  <div>
+    <img
+      onClick={() => navigate("/")}
+      src="/logo.png"
+      alt="logo"
+      style={{
+        // minHeight: "100px",
+        minWidth: "200px",
+        maxWidth: "120px",
+        width: "auto",
+        cursor: "pointer",
+        paddingBottom: "1.5rem",
+      }}
+    />
+  </div>
+  
+</Modal.Title>
+
       </Modal.Header>
       <Modal.Body>
       <Form onSubmit={handlePost}>

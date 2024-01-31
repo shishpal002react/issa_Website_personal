@@ -288,13 +288,16 @@ const ResourcesPage = () => {
                       }}
                       key={i}
                     >
+                      <div style={{height:"300px",width:"auto"}}>
                       <img
                         src={item?.image}
                         style={{
                           maxWidth: "240px",
-                          maxHeight: "240px",
+                          height: "200px",
                           width: "auto",
                           height: "auto",
+                          objectFit:"contain",
+                         
                         }}
                         alt="image-1"
                       />
@@ -303,10 +306,12 @@ const ResourcesPage = () => {
                           fontWeight: "700",
                           fontSize: "1rem",
                           color: "#32373A",
+                          marginTop: "0.5rem"
                         }}
                       >
                         {item?.title}
                       </p>
+                      </div>
                       <button
                         style={{
                           backgroundColor: "#1C5877",

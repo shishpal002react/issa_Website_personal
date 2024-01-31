@@ -35,21 +35,21 @@ const SupportPage = () => {
   return (
     <div className="support-page">
       <div className="support-page-container">
-        <p>Support & Training</p>
+        {/* <p>Support & Training</p> */}
       </div>
       <div className="support-page-container2">
         <div className="support-page-container21">
-          <div className="support-page-container211">
+          {/* <div className="support-page-container211">
             <span>Training Session Link</span>
             <span>
               <img src="/SupportPage/zoom.png" alt="zoom" />
             </span>
-          </div>
+          </div> */}
           <div className="support-page-container211">
             <span>OasisNotes Support</span>
-            <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
+            {/* <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
             <div style={{padding: "10px", borderRadius:"18px",color:"white",cursor:"pointer", backgroundColor:"#1A9FB2", fontSize:"12px",width:"70%",textAlign:"center"}}>OasisNotes Support</div>
-            </div>
+            </div> */}
            
           </div>
           <div
@@ -69,15 +69,15 @@ const SupportPage = () => {
                     borderTop: "1px solid black",
                   }}
                 >
-                  {question?.title}
+                  {/* {question?.title} */}
                 </p>
 
                 <p style={{ color: "#AF110C" }}>{item?.question}</p>
                 <p style={{ fontSize: "1rem" }}>{item?.answer}</p>
-                <hr style={{ width: "50%" }} />
+                {/* <hr style={{ width: "50%" }} /> */}
               </div>
             ))}
-            <div>
+            {/* <div>
               <p style={{ color: "#1A9FB2" }}>{question?.description}</p>
 
               <button
@@ -97,7 +97,7 @@ const SupportPage = () => {
                   Click Here
                 </a>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="support-page-container22">

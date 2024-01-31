@@ -168,17 +168,8 @@ const DownloadPage = () => {
                 <span style={{ fontWeight: "bold" }}>Network:</span> Broadband
                 Internet connection <br />
                 <span style={{ fontWeight: "bold" }}>Storage:</span> 500 MB
-                available space <br /> For more detailed information, please
-                click{" "}
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    color: "#1A9FB2",
-                    textDecoration: "underline",
-                  }}
-                >
-                  here
-                </span>
+                available space <br /> 
+              
                 .
               </p>
               <p
