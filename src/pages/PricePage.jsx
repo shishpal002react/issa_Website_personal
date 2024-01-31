@@ -136,8 +136,9 @@ const PricePage = () => {
             textAlign: "center",
             fontSize: "1.4rem",
             fontWeight: "700",
-            color: "#AF110C",
+            color: "#555",
             lineHeight: "2rem",
+            fontStyle:"italic"
           }}
         >
           {fpq?.heading}
@@ -202,10 +203,12 @@ const PricePage = () => {
                       alignItems: "center",
                       marginTop: "1rem",
                       cursor: "pointer",
-                      backgroundColor: "#1A9FB2",
+                      // backgroundColor: "#1A9FB2",#555
+                      backgroundColor: "#555",
                       outline: "none",
                       padding: "10px",
                       border: "none",
+                      color:"white",
                       borderRadius: "5px",
                       minWidth: "40%",
                     }}
@@ -272,7 +275,7 @@ const PricePage = () => {
           <p>Medication Administration Record</p>
           <p>Administration Tracking</p>
         </div> */}
-        <div
+        {/* <div
           style={{
             display: "flex",
             flexDirection: "column",
@@ -304,8 +307,8 @@ const PricePage = () => {
           )}
 
      
-        </div>
-        <div style={{ width: "60%", margin: "auto", textAlign: "center" }}>
+        </div> */}
+        {/* <div style={{ width: "60%", margin: "auto", textAlign: "center" }}>
           <p
             style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#AF110C" }}
           >
@@ -314,8 +317,8 @@ const PricePage = () => {
           <p style={{ fontSize: "1.2rem", textAlign: "center" }}>
             {fpq?.description}
           </p>
-        </div>
-        <div className="price-calculator-page">
+        </div> */}
+        {/* <div className="price-calculator-page">
           <div
             style={{
               display: "flex",
@@ -400,7 +403,7 @@ const PricePage = () => {
               {userData}
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
       <MyVerticallyCenteredModal
         show={modalShow}

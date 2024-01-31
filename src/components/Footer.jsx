@@ -27,18 +27,19 @@ export const Footer = () => {
   return (
     <>
       <div className="main-container-footer">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            width: "80%",
-            margin: "auto",
-            fontSize: ".8rem",
-            flexWrap: "wrap",
-          }}
+        <div className="footer-child"
+          // style={{
+          //   display: "flex",
+          //   flexDirection: "row",
+          //   justifyContent: "space-evenly",
+          //   width: "80%",
+          //   margin: "auto",
+          //   fontSize: ".8rem",
+          //   flexWrap: "wrap",
+            
+          // }}
         >
-          <div></div>
+       
           <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
             <img
               style={{ maxWidth: "25px", maxHeight: "25px" }}
@@ -82,13 +83,13 @@ export const Footer = () => {
                 alt="facebook"
               />
             </a>
-            <a href={contect?.twitter}>
+            {/* <a href={contect?.twitter}>
               <img
                 style={{ maxWidth: "25px", maxHeight: "25px" }}
                 src="/HomePage/Vector-2.png"
                 alt="facebook"
               />
-            </a>
+            </a> */}
           </div>
         </div>
         <div className="footer-bottom-container">
@@ -111,6 +112,8 @@ export const Footer = () => {
                   maxWidth: "145px",
                   width: "auto",
                   cursor: "pointer",
+                  paddingBottom:"1.5rem",
+                  
                 }}
               />
             </div>
@@ -129,11 +132,14 @@ export const Footer = () => {
               >
                 About us
               </p>
-              <p onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+              <p onClick={() => navigate("/resources")} style={{ cursor: "pointer" }}>
                 Testimonials
               </p>
-              <p onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+              <p onClick={() => navigate("/all_news_information")} style={{ cursor: "pointer" }}>
                 News
+              </p>
+              <p onClick={() => navigate("/term-condition")} style={{ cursor: "pointer" }}>
+              Terms and Conditions
               </p>
             </div>
           </div>

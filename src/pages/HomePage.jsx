@@ -138,7 +138,7 @@ export const HomePage = () => {
           Trusted by Clinicians Nationwide
         </span>
       </p>
-      <div
+      {/* <div
         style={{
           width: "80%",
           margin: "auto",
@@ -161,7 +161,7 @@ export const HomePage = () => {
             />
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div className="features-container-homepage1">
         <div>
@@ -415,7 +415,7 @@ export const HomePage = () => {
                   alt="image"
                 />
               </div>
-              <div>
+              <div >
                 <p>{item?.title}</p>
                 <p style={{ fontWeight: "bold" }}>{item?.description}</p>
               </div>
