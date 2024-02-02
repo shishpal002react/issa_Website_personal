@@ -36,9 +36,9 @@ export const NavBar = () => {
                   <NavDropdown.Item href="/support-downloads">
                     Downloads
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/support-notes">
+                  {/* <NavDropdown.Item href="/support-notes">
                     OasisNotes Support
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                   <NavDropdown.Item href="/support-account-management">
                     Account Management
                   </NavDropdown.Item>

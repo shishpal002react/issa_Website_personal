@@ -145,7 +145,7 @@ const ContactUs = () => {
         <p>Intuitive, Accessible, Time-Saving</p>
         <p>
           {" "}
-          <span style={{ fontWeight: "normal" }}>The </span> only EHR software
+          <span style={{ fontWeight: "normal" }}>The </span> only EMR software
           that actually thinks like a clinician.
         </p>
         <button

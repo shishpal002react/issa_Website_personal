@@ -2,13 +2,16 @@ import "./css/Support.css";
 import { useState, useEffect } from "react";
 import { Link } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const SupportPage = () => {
+  const navigate=useNavigate();
   const [contect, setContect] = useState("");
   const [question, setQuestion] = useState("");
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
   const contectDetail = async () => {
+   
     try {
       const res = await axios.get(
         `${BaseUrl}ContactDetails/viewContactDetails`
@@ -33,6 +36,7 @@ const SupportPage = () => {
     questionAwnser();
   }, []);
   return (
+
     <div className="support-page">
       <div className="support-page-container">
         {/* <p>Support & Training</p> */}
@@ -47,9 +51,9 @@ const SupportPage = () => {
           </div> */}
           <div className="support-page-container211">
             <span>OasisNotes Support</span>
-            {/* <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
-            <div style={{padding: "10px", borderRadius:"18px",color:"white",cursor:"pointer", backgroundColor:"#1A9FB2", fontSize:"12px",width:"70%",textAlign:"center"}}>OasisNotes Support</div>
-            </div> */}
+            <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
+            <div style={{padding: "10px", borderRadius:"18px",color:"white",cursor:"pointer", backgroundColor:"#1A9FB2", fontSize:"12px",width:"70%",textAlign:"center"}} onClick={()=>navigate("/demo-request")}>OasisNotes Support</div>
+            </div>
            
           </div>
           <div

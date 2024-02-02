@@ -172,7 +172,7 @@ const DownloadPage = () => {
               
                 .
               </p>
-              <p
+              {/* <p
                 style={{
                   fontSize: "1.3rem",
                   fontWeight: "bold",
@@ -181,8 +181,8 @@ const DownloadPage = () => {
                 }}
               >
                 Mobile Capabilities:
-              </p>
-              <p style={{ fontWeight: "bold" }}>
+              </p> */}
+              {/* <p style={{ fontWeight: "bold" }}>
                 <li>View & Create Contacts </li>{" "}
                 <li>View & Create Q-log messages</li>
                 <li> View & Create Tasks/Reminders </li>
@@ -197,7 +197,7 @@ const DownloadPage = () => {
                 <li>Admission Applications</li>
                 <li>Medical/Clinical Documentation</li>
                 <br />
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

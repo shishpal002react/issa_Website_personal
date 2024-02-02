@@ -183,7 +183,8 @@ const ResourcesPage = () => {
                           maxWidth: "200px",
                           maxHeight: "200px",
                           width: "auto",
-                          height: "auto",
+                          height: "150px",
+                          objectFit:"cover"
                         }}
                         alt="image-1"
                       />
@@ -213,7 +214,7 @@ const ResourcesPage = () => {
                   ))}
                 </div>
 
-                <div>
+                {/* <div>
                   <p style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
                     Explore Popular Posts
                   </p>
@@ -256,7 +257,7 @@ const ResourcesPage = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
                 <p
                   style={{
                     fontWeight: "bold",
@@ -293,10 +294,10 @@ const ResourcesPage = () => {
                         src={item?.image}
                         style={{
                           maxWidth: "240px",
-                          height: "200px",
+                          // height: "200px",
                           width: "auto",
-                          height: "auto",
-                          objectFit:"contain",
+                         
+                          objectFit:"cover",
                          
                         }}
                         alt="image-1"

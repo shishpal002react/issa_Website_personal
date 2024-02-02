@@ -7,34 +7,36 @@ import Accordion from "react-bootstrap/Accordion";
 // payment gateway
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 function MyVerticallyCenteredModal(props) {
-  const [email,setEmail]=useState("")
-  const [subscriptionId,setSubscriptionId]=useState("");
+  const [email, setEmail] = useState("");
+  const [subscriptionId, setSubscriptionId] = useState("");
 
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
-  useEffect(()=>{
-    if(props.show===true){
+  useEffect(() => {
+    if (props.show === true) {
       setSubscriptionId(props.subscriptionId);
     }
-  })
+  });
 
-  const handlePost=async(e)=>{
+  const handlePost = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${BaseUrl}takeSubscription/${subscriptionId}`,{
-        email
-      });
-      console.log(res,"payment data")
-      window.location.href=res.data.session.url;
+      const res = await axios.post(
+        `${BaseUrl}takeSubscription/${subscriptionId}`,
+        {
+          email,
+        }
+      );
+      console.log(res, "payment data");
+      window.location.href = res.data.session.url;
     } catch (error) {
       console.log(error);
     }
-
-  }
+  };
 
   return (
     <Modal
@@ -44,36 +46,63 @@ function MyVerticallyCenteredModal(props) {
       centered
     >
       <Modal.Header closeButton>
-      <Modal.Title id="contained-modal-title-vcenter" style={{ display: "flex", alignItems: "center", justifyContent: "center",width:"100%" }}>
-  <div>
-    <img
-      onClick={() => navigate("/")}
-      src="/logo.png"
-      alt="logo"
-      style={{
-        // minHeight: "100px",
-        minWidth: "200px",
-        maxWidth: "120px",
-        width: "auto",
-        cursor: "pointer",
-        paddingBottom: "1.5rem",
-      }}
-    />
-  </div>
-  
-</Modal.Title>
-
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+         
+        >
+          <div  style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection:"column",
+            justifyContent: "center",
+            width: "100%",
+          }}>
+            <div>
+              <img
+                src="/logo.png"
+                alt="logo"
+                style={{
+                  // minHeight: "100px",
+                  minWidth: "200px",
+                  maxWidth: "120px",
+                  width: "auto",
+                  cursor: "pointer",
+                  paddingBottom: "1.5rem",
+                }}
+              />
+            </div>
+            <div>
+            <p style={{fontSize:"16px",fontWeight:"bold",color:"blue"}}>
+            The first three-month charge will be $900 as the initial payment, after which $300 will be automatically charged every month.
+        </p>
+            </div>
+          </div>
+        </Modal.Title>
+        
       </Modal.Header>
       <Modal.Body>
-      <Form onSubmit={handlePost}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label style={{fontSize:"1rem"}}>Email address</Form.Label>
-        <Form.Control type="email"  placeholder="Enter email" required value={email} onChange={(e)=>setEmail(e.target.value)}/>
-      </Form.Group>
-      <Button variant="primary" type="submit" style={{marginTop:"1.5rem"}}>
-        Submit
-      </Button>
-    </Form>
+        <Form onSubmit={handlePost}>
+          <Form.Group
+            className="mb-3"
+            controlId="formBasicEmail"
+          >
+            <Form.Label style={{ fontSize: "1rem" }}>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="submit"
+            style={{ marginTop: "1.5rem" }}
+          >
+            Submit
+          </Button>
+        </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
@@ -85,7 +114,7 @@ function MyVerticallyCenteredModal(props) {
 const PricePage = () => {
   // model
   const [modalShow, setModalShow] = useState(false);
-  const [subscriptionId,setSubscriptionId]=useState("");
+  const [subscriptionId, setSubscriptionId] = useState("");
 
   const [pricing, setPricing] = useState([]);
   const [user, setUser] = useState("");
@@ -154,7 +183,7 @@ const PricePage = () => {
             fontWeight: "700",
             color: "#555",
             lineHeight: "2rem",
-            fontStyle:"italic"
+            fontStyle: "italic",
           }}
         >
           {fpq?.heading}
@@ -165,28 +194,19 @@ const PricePage = () => {
             <>
               <div
                 key={i}
-                style={{
-                  border: "1px solid grey",
-                  // maxWidth: "300px",
-                  // maxHeight: "180px",
-                  gap: "10px",
-                  width: "100%",
-                  height: "auto",
-                  marginBottom: "1rem",
-                }}
+                className="pricing-child-block"
               >
                 <p
                   style={{
                     textAlign: "center",
                     backgroundColor: "#1A9FB2",
                     color: "white",
-                    padding: "1rem",
+                    padding: "1.8rem",
                     fontWeight: "500",
                     fontSize: "1.5rem",
                   }}
                 >
-                  User {item?.till}
-                  {/* Each User: 1-10 */}
+                 
                 </p>
                 <div
                   style={{
@@ -224,19 +244,19 @@ const PricePage = () => {
                       outline: "none",
                       padding: "10px",
                       border: "none",
-                      color:"white",
+                      color: "white",
                       borderRadius: "5px",
                       minWidth: "40%",
                     }}
                     onClick={() => {
                       setModalShow(true);
-                      setSubscriptionId(item._id)
+                      setSubscriptionId(item._id);
                     }}
                   >
                     Subscribe Now
                   </button>
 
-                  <p
+                  {/* <p
                     style={{
                       color: "#1A9FB2",
                       alignItems: "center",
@@ -248,22 +268,26 @@ const PricePage = () => {
                     }
                   >
                     View more
-                  </p>
+                  </p> */}
 
-                  {view === item._id &&
-                    item?.details?.map((data, i) => (
-                      <p
+                  <div style={{ marginTop: "2rem"}}>
+                    {item?.details?.map((data, i) => (
+                      <ul
                         key={i}
                         style={{
-                          textAlign: "center",
+                          // textAlign: "center",
                           width: "90%",
                           margin: "auto",
-                          paddingBottom: "1.5rem",
+                          // paddingBottom: "1.5rem",
+                          fontWeight: "bold",
+                          paddingTop: "1rem",
+                          // lineHeight:"1.5rem"
                         }}
                       >
-                        {data}
-                      </p>
+                        <li>{data}</li>
+                      </ul>
                     ))}
+                  </div>
                 </div>
               </div>
             </>

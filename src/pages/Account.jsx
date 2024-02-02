@@ -55,20 +55,48 @@ const Account = () => {
             Login
           </p>
           <div className="account-page-container">
-            <div style={{ border: "1px solid black" }}>
+            <div style={{ border: "1px solid black",width:"90%",margin:"auto",paddingBottom:"1.5rem" }}>
               <p
                 style={{
                   fontSize: "1.5rem",
                   padding: "0.2rem",
                   textAlign: "right",
-                  padddingRight: "3rem",
+                  paddingRight: "3rem",
                  
                 }}
               >
                 Login to existing account:
               </p>
 
-              <Form
+<div style={{display:"flex",flexDirection:"column"}}>
+              <Form style={{width:"85%",margin:"auto"}}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label style={{marginRight:"86%"}}>Email address</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" />
+        
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label style={{marginRight:"90%"}}>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" />
+      </Form.Group>
+     
+      <Button
+                    
+                    style={{
+                      padding: "0.5rem 1.5rem",
+                      marginTop: "1rem",
+                      marginRight:"90%"
+                    }}
+                    variant="primary"
+                    type="submit"
+                  >
+                    Login
+                  </Button>
+    </Form>
+    </div>
+
+              {/* <Form
                 style={{
                   padding: "1rem",
                 }}
@@ -92,6 +120,7 @@ const Account = () => {
                     style={{
                       backgroundColor: "#D1ECF0",
                       border: "1px solid black",
+                      marginLeft: "1.5rem"
                     }}
                     type="email"
                     value={user}
@@ -102,6 +131,7 @@ const Account = () => {
                   style={{
                     display: "flex",
                     flexDirection: "row",
+                    
                     justifyContent: "space-between",
                   }}
                   className="mb-3"
@@ -112,6 +142,7 @@ const Account = () => {
                     style={{
                       backgroundColor: "#D1ECF0",
                       border: "1px solid black",
+                      marginLeft: "1.5rem",
                     }}
                     type="password"
                     value={password}
@@ -126,7 +157,7 @@ const Account = () => {
                   }}
                 >
                   <Button
-                    // onClick={() => navigate("/")}
+                    
                     style={{
                       padding: "0.5rem 1.5rem",
                       marginTop: "1rem",
@@ -138,9 +169,29 @@ const Account = () => {
                   </Button>
                   <p style={{ color: "black" }}>Forget your password?</p>
                 </div>
-              </Form>
+              </Form> */}
             </div>
-            {/* <div
+            
+          </div>
+        </div>
+        <p style={{ fontWeight: "900", fontSize: "1.2rem",padding:"1rem"
+        
+         }}>
+          By using the portal your agree to the{" "}
+          <span style={{ color: "#0152A8", textDecoration: "underline" }}>
+            Terms of Use.
+          </span>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Account;
+
+
+
+{/* <div
               style={{ border: "1px solid black", backgroundColor: "white",visibility:"hidden" }}
             >
               <Form
@@ -209,17 +260,3 @@ const Account = () => {
                 Request for Demo
               </Button>
             </div> */}
-          </div>
-        </div>
-        <p style={{ fontWeight: "900", fontSize: "1.2rem" }}>
-          By using the portal your agree to the{" "}
-          <span style={{ color: "#0152A8", textDecoration: "underline" }}>
-            Terms of Use.
-          </span>
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default Account;
