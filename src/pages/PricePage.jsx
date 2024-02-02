@@ -13,11 +13,14 @@ function MyVerticallyCenteredModal(props) {
   const [email, setEmail] = useState("");
   const [subscriptionId, setSubscriptionId] = useState("");
 
+  const [textData,setTextData]=useState("")
+
   const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
 
   useEffect(() => {
     if (props.show === true) {
       setSubscriptionId(props.subscriptionId);
+      setTextData(props.textData);
     }
   });
 
@@ -72,9 +75,9 @@ function MyVerticallyCenteredModal(props) {
               />
             </div>
             <div>
-            {/* <p style={{fontSize:"16px",fontWeight:"bold",color:"blue"}}>
-            The first three-month charge will be $900 as the initial payment, after which $300 will be automatically charged every month.
-        </p> */}
+            <p style={{fontSize:"16px",fontWeight:"bold",color:"blue"}}>
+            {textData}
+        </p>
             </div>
           </div>
         </Modal.Title>
@@ -115,6 +118,9 @@ const PricePage = () => {
   // model
   const [modalShow, setModalShow] = useState(false);
   const [subscriptionId, setSubscriptionId] = useState("");
+
+  //inner text
+  const [textData,setTextData]=useState("");
 
   const [pricing, setPricing] = useState([]);
   const [user, setUser] = useState("");
@@ -222,7 +228,7 @@ const PricePage = () => {
                       marginTop: "1rem",
                     }}
                   >
-                    ${item?.perUser}/ User
+                    ${item?.perUser}/ Month
                   </p>
                   <p
                     style={{
@@ -255,6 +261,7 @@ const PricePage = () => {
                     onClick={() => {
                       setModalShow(true);
                       setSubscriptionId(item._id);
+                      setTextData(`The first three-month charge will be ${item?.perUser*3} as the initial payment, after which ${item?.perUser} will be automatically charged every month.`)
                     }}
                   >
                     Subscribe Now
@@ -453,6 +460,7 @@ const PricePage = () => {
         show={modalShow}
         onHide={() => setModalShow(false)}
         subscriptionId={subscriptionId}
+        textData={textData}
       />
     </div>
   );
