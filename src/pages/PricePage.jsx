@@ -75,7 +75,7 @@ function MyVerticallyCenteredModal(props) {
               />
             </div>
             <div>
-            <p style={{fontSize:"16px",fontWeight:"bold",color:"blue"}}>
+            <p style={{fontSize:"16px",fontWeight:"bold"}}>
             {textData}
         </p>
             </div>
@@ -261,8 +261,8 @@ const PricePage = () => {
                     onClick={() => {
                       setModalShow(true);
                       setSubscriptionId(item._id);
-                      setTextData(`The first three-month charge will be ${item?.perUser*3} as the initial payment, after which ${item?.perUser} will be automatically charged every month.`)
-                    }}
+                      setTextData(`Plan ${i+1} is ${item?.perUser*3} for the first 3 months and then ${item?.perUser} every month.`)
+                    }} 
                   >
                     Subscribe Now
                   </button>
