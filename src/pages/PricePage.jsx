@@ -206,7 +206,7 @@ const PricePage = () => {
                     fontSize: "1.5rem",
                   }}
                 >
-                 {`Plane ${i+1}`}
+                 {`Plan ${i+1}`}
                 </p>
                 <div
                   style={{
