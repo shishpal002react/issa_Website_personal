@@ -230,7 +230,7 @@ const PricePage = () => {
                   >
                     ${item?.perUser}/ Month
                   </p>
-                  <p
+                  {/* <p
                     style={{
                       fontSize: ".8rem",
                       fontWeight: "bold",
@@ -238,7 +238,7 @@ const PricePage = () => {
                     }}
                   >
                     PER MONTH
-                  </p>
+                  </p> */}
 
                   <p style={{fontSize:"16px",fontWeight:"bold",width:"80%",margin:"auto",textAlign:"center"}}>
             The first three-month charge will be ${item?.perUser*3} as the initial payment, after which ${item?.perUser} will be automatically charged every month.
