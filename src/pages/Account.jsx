@@ -68,16 +68,16 @@ const Account = () => {
                 Login to existing account:
               </p>
 
-<div style={{display:"flex",flexDirection:"column"}}>
-              <Form style={{width:"85%",margin:"auto"}}>
+<div >
+              <Form style={{width:"85%",margin:"auto",textAlign:"left"}}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label style={{marginRight:"86%"}}>Email address</Form.Label>
+        <Form.Label >Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" />
         
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label style={{marginRight:"90%"}}>Password</Form.Label>
+        <Form.Label >Password</Form.Label>
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
      
@@ -86,7 +86,7 @@ const Account = () => {
                     style={{
                       padding: "0.5rem 1.5rem",
                       marginTop: "1rem",
-                      marginRight:"90%"
+                      
                     }}
                     variant="primary"
                     type="submit"

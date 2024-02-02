@@ -72,9 +72,9 @@ function MyVerticallyCenteredModal(props) {
               />
             </div>
             <div>
-            <p style={{fontSize:"16px",fontWeight:"bold",color:"blue"}}>
+            {/* <p style={{fontSize:"16px",fontWeight:"bold",color:"blue"}}>
             The first three-month charge will be $900 as the initial payment, after which $300 will be automatically charged every month.
-        </p>
+        </p> */}
             </div>
           </div>
         </Modal.Title>
@@ -201,12 +201,12 @@ const PricePage = () => {
                     textAlign: "center",
                     backgroundColor: "#1A9FB2",
                     color: "white",
-                    padding: "1.8rem",
+                    padding: "0.8rem",
                     fontWeight: "500",
                     fontSize: "1.5rem",
                   }}
                 >
-                 
+                 {`User ${i+1}`}
                 </p>
                 <div
                   style={{
@@ -233,6 +233,10 @@ const PricePage = () => {
                   >
                     PER MONTH
                   </p>
+
+                  <p style={{fontSize:"16px",fontWeight:"bold",width:"80%",margin:"auto",textAlign:"center"}}>
+            The first three-month charge will be ${item?.perUser*3} as the initial payment, after which ${item?.perUser} will be automatically charged every month.
+        </p>
 
                   <button
                     style={{
