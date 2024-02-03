@@ -82,9 +82,9 @@ const ResourcesPage = () => {
         <p>Resources</p>
       </div>
       <div className="partner-page-container2">
-        <p style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+        <p style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
           Sample{" "}
-          <span style={{ fontSize: "1.8rem", fontWeight: "900" }}>Notes</span>{" "}
+          <span style={{ fontSize: "1.3rem", fontWeight: "900" }}>Notes</span>{" "}
         </p>
 
         <div className="partner-page-container21">
@@ -102,7 +102,7 @@ const ResourcesPage = () => {
                 alt="partner"
               />
             </div>
-            <p style={{ fontSize: ".8rem", lineHeight: "1rem  " }}>
+            <p style={{ fontSize: "1rem", lineHeight: "1rem  " }}>
               <p
                 style={{
                   color: "#32373A",
@@ -125,7 +125,7 @@ const ResourcesPage = () => {
                 fontWeight: "bold",
                 fontSize: "1.5rem",
                 borderTop: "1px solid #CCCCCC",
-                paddingTop: "1.5rem",
+                paddingTop: "1.3rem",
               }}
             >
               {mainBlog?.title}

@@ -120,9 +120,9 @@ export const Footer = () => {
           </div>
           <div style={{ width: "100%", margin: "auto" }}>
             <div>
-              <p onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+              {/* <p onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
                 Explore
-              </p>
+              </p> */}
               <p onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
                 Home{" "}
               </p>

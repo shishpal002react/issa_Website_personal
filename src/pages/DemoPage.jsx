@@ -133,7 +133,7 @@ const DemoPage = () => {
       </div>
       <div className="support-page-container2">
         <div className="download-page-container21">
-          <p
+          {/* <p
             style={{
               fontWeight: "bold",
               fontSize: "1.5rem",
@@ -141,9 +141,9 @@ const DemoPage = () => {
             }}
           >
             Demo Request (Contact Form)
-          </p>
+          </p> */}
           <Form
-            style={{ width: "100%", color: "#545454", fontWeight: "bold" }}
+            style={{ width: "100%", color: "#545454", fontWeight: "bold",marginTop:"1.5rem" }}
             onSubmit={handleData}
           >
             <Form.Group className="mb-3  " controlId="formBasicEmail">

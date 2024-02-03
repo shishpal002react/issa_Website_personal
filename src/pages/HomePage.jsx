@@ -207,22 +207,20 @@ export const HomePage = () => {
       </div>
 
       <div style={{ width: "80%", margin: "auto" }}>
-        {" "}
-        <div
+       
+        {/* <div
           className="top-section-homePage1"
           style={{ backgroundImage: `url(${about?.image})` }}
         >
           <div className="text-container1">
             <p style={{ fontSize: ".8rem", fontWeight: "400" }}>About Us</p>
             <p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-              {/* The Heart And Science Of Medicate Test */}
+              
               {about?.tittle}
             </p>
             <p style={{ fontSize: ".9rem", fontWeight: "100" }}>
               {about?.description}
-              {/* Capitalize on low hanging fruit to identify a ballpark value added
-              activity to beta test. Override the digital divide with
-              information highway will close. */}
+              
             </p>
             <div
               className="new-homepage-class"
@@ -272,14 +270,15 @@ export const HomePage = () => {
                 backgroundColor: "#024064",
                 color: "white",
                 border: "none",
-                cursor: "pointer",
+              
+                
               }}
-              onClick={() => navigate("/all_about_information")}
+              
             >
               More About Us
             </button>
           </div>
-        </div>
+        </div> */}
         <div className="container6-homePage">
           {about?.cate?.map((item, i) => (
             <div key={i}>
@@ -289,6 +288,8 @@ export const HomePage = () => {
           ))}
         </div>
       </div>
+
+
       {/* Speecial Care */}
       <div className="container7-homePage">
         <div>

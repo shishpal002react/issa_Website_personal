@@ -127,7 +127,7 @@ const AboutPage = () => {
           </div>
         </div> */}
       </div>
-      <div className="support-page-container22">
+      <div className="support-page-container22" style={{width:"80%",margin:"auto"}}>
         <div>
           <p
             style={{
