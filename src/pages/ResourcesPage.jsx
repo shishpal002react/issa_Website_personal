@@ -83,13 +83,12 @@ const ResourcesPage = () => {
       </div>
       <div className="partner-page-container2">
         <p style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
-          Sample{" "}
-          <span style={{ fontSize: "1.3rem", fontWeight: "900" }}>Notes</span>{" "}
+        Link Resources
         </p>
 
         <div className="partner-page-container21">
           <div className="partner-page-container2111">
-            <div>
+            {/* <div>
               <img
                 style={{
                   maxWidth: "190px",
@@ -115,7 +114,14 @@ const ResourcesPage = () => {
              
               <p>{blogNotes?.description}</p>
              
-            </div>
+            </div> */}
+            <ul>
+              <li>For Behavioral Health Residential Facilities Licensing ADHS - Residential Facilities Licensing - Home (<a href="https://www.azdhs.gov/">azdhs.gov</a>)</li>
+              <li>APEP Login    Identity Cloud Service (<a href="https://www.oracle.com/cloud/">oraclecloud.com</a>)</li>
+              <li>QM Portal      (<a href="https://qmportal.azahcccs.gov">https://qmportal.azahcccs.gov</a>)</li>
+              <li>AHCCCS ONLINE    (<a href="https://azwebtst.statemedicaid.us">https://azwebtst.statemedicaid.us</a>)  </li>
+              <li>Relias - Small Provider Portal (SPP) (<a href="https://www.relias.com/">reliaslearning.com</a>)</li>
+            </ul>
           </div>
         </div>
         <div>
