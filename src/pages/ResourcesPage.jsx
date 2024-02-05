@@ -102,7 +102,7 @@ const ResourcesPage = () => {
                 alt="partner"
               />
             </div>
-            <p style={{ fontSize: "1rem", lineHeight: "1rem  " }}>
+            <div >
               <p
                 style={{
                   color: "#32373A",
@@ -112,10 +112,10 @@ const ResourcesPage = () => {
               >
                 {blogNotes?.title}
               </p>{" "}
-              <br />
-              {blogNotes?.description}
-              <br />
-            </p>
+             
+              <p>{blogNotes?.description}</p>
+             
+            </div>
           </div>
         </div>
         <div>
@@ -123,7 +123,7 @@ const ResourcesPage = () => {
             <p
               style={{
                 fontWeight: "bold",
-                fontSize: "1.5rem",
+                fontSize: "1.3rem",
                 borderTop: "1px solid #CCCCCC",
                 paddingTop: "1.3rem",
               }}
@@ -132,7 +132,7 @@ const ResourcesPage = () => {
             </p>
             <div className="resources-page-container2111">
               <div className="resources-page-container21111">
-                <p>{mainBlog?.description}</p>
+                <p style={{fontWeight:"500",fontSize:"16px"}}>{mainBlog?.description}</p>
                 <p>
                   <button
                     onClick={() =>
@@ -161,6 +161,7 @@ const ResourcesPage = () => {
                     fontSize: "1.3rem",
                     color: "#32373A",
                     marginTop: "1.6rem",
+                    marginBottom: "0.5rem"
                   }}
                 >
                   Browse by Category
