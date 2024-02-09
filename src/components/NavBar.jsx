@@ -74,6 +74,26 @@ export const NavBar = () => {
                 >
                   Contact
                 </Nav.Link>
+
+                <NavDropdown
+                  title="Login"
+                  id="collapsible-nav-dropdown"
+                  className="custom-dropdown-title"
+                >
+                  <NavDropdown.Item href="https://65c62d1311131912a196dea1--hilarious-ganache-1743e6.netlify.app/">
+                    Patient Website 
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="https://issa-employee-panel.vercel.app/">
+                    Employee Website
+                  </NavDropdown.Item>
+                  {/* <NavDropdown.Item href="/support-notes">
+                    OasisNotes Support
+                  </NavDropdown.Item> */}
+                  <NavDropdown.Item href="">
+                    Admin Website
+                  </NavDropdown.Item>
+                </NavDropdown>
+
                 <Nav.Link
                   style={{
                     color: "white",

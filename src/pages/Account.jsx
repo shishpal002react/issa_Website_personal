@@ -178,7 +178,7 @@ const Account = () => {
         
          }}>
           By using the portal your agree to the{" "}
-          <span style={{ color: "#0152A8", textDecoration: "underline" }}>
+          <span style={{ color: "#0152A8", textDecoration: "underline",cursor:"pointer" }} onClick={()=>navigate("/term-condition")}>
             Terms of Use.
           </span>
         </p>
