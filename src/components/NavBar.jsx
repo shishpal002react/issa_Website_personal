@@ -89,7 +89,7 @@ export const NavBar = () => {
                   {/* <NavDropdown.Item href="/support-notes">
                     OasisNotes Support
                   </NavDropdown.Item> */}
-                  <NavDropdown.Item href="">
+                  <NavDropdown.Item href="https://issa-admin-api-ravindra.vercel.app/">
                     Admin Website
                   </NavDropdown.Item>
                 </NavDropdown>
