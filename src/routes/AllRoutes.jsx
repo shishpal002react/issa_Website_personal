@@ -19,6 +19,7 @@ import AllAboutuspage from "../pages/AllAboutuspage";
 import SuccessPaymentPage from "../pages/SuccessPaymentPage";
 import FailPaymentPage from "../pages/FailPaymentPage";
 import TermandContion from "../pages/TermandContion";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 
 export const AllRoutes = () => {
   return (
@@ -52,7 +53,8 @@ export const AllRoutes = () => {
 
       {/* term and condition */}
       <Route path="/term-condition" element={<TermandContion />} />
-
+{/* privacy lolicy */}
+<Route path="/Privacy-policy" element={<PrivacyPolicy />} />
       {/* [payment] */}
       <Route path="/paymet-successfull/:id" element={<SuccessPaymentPage />} />
       <Route path="/paymet-failed/:id" element={<FailPaymentPage />} />
