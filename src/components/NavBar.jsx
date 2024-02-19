@@ -80,7 +80,7 @@ export const NavBar = () => {
                   id="collapsible-nav-dropdown"
                   className="custom-dropdown-title"
                 >
-                  <NavDropdown.Item href="https://65c62d1311131912a196dea1--hilarious-ganache-1743e6.netlify.app/">
+                  <NavDropdown.Item href="https://65d33e4958414103e0e69fc2--hilarious-ganache-1743e6.netlify.app/">
                     Patient Panel
                   </NavDropdown.Item>
                   <NavDropdown.Item href="https://issa-employee-panel.vercel.app/">
