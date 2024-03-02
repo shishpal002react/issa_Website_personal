@@ -30,7 +30,7 @@ const ContactUs = () => {
       <div className="contactus-parent">
         <div className="support-page-container-contact">
           <p style={{ fontSize: "2.1rem", paddingTop: "6rem" }}>
-            <span style={{ fontWeight: "900", fontSize: "2.1rem" }}>We'd Love to Hear From You</span>{" "}
+            <span style={{ fontWeight: "900", fontSize: "2.1rem" }}>We would love to hear from you</span>{" "}
           </p>
           <p className="contect-page-container-child"><span ><MdOutlineWatchLater /></span>We provide live phone support 24 hours a day, 7 days a week!</p>
 
@@ -46,13 +46,13 @@ const ContactUs = () => {
               }}
 
             >
-              <img src={contect?.image} alt="klsn" />
+              <img src={contect?.saleImage} alt="klsn" />
             </div>
             <div className="contect-page-container-child-responsive">
               <p style={{ fontWeight: "900", fontSize: "1.5rem", color: "black" }}>
                 Sales
               </p>
-              <p>Questions before you get started? We're here to help!</p>
+              <p>{contect?.saleDescription}</p>
               <div >
                 {/* <div
                   style={{
@@ -88,7 +88,7 @@ const ContactUs = () => {
                   />
                   <div style={{ fontSize: ".9rem", lineHeight: "1rem" }}>
                     <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Sales Email</p>
-                    <p>{contect?.supportEmail}</p>
+                    <p>{contect?.saleEmail}</p>
                   </div>
                 </div>
                 <div
@@ -156,7 +156,7 @@ const ContactUs = () => {
 
               }}
             >
-              <img src={contect?.image} alt="klsn" />
+              <img src={contect?.supportImage} alt="klsn" />
             </div>
             <div className="contect-page-container-child-responsive">
               <p style={{ fontWeight: "900", fontSize: "1.5rem", color: "black" }}>

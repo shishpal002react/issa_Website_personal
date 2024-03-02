@@ -295,16 +295,16 @@ const DemoPage = () => {
             <p>{contect?.state}</p>
             <p>{contect?.pincode}</p>
             <p>
-              Support/Training :{" "}
+              Support :{" "}
               <span style={{ color: "#0152A8", textDecoration: "underline" }}>
                 {contect?.technicalSupport}
               </span>
             </p>
             <p style={{ color: "#0152A8", textDecoration: "underline" }}>
-              {contect?.teamEmail}
+              {contect?.supportEmail}
             </p>
             <p>
-              Sales/Demo:{" "}
+              Sales :{" "}
               <span style={{ color: "#0152A8", textDecoration: "underline" }}>
                 {contect?.salePhone}
               </span>

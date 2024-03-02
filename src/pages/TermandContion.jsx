@@ -51,7 +51,7 @@ const TermandContion = () => {
        <div>
        <h1 style={{marginTop:"1.5rem",textAlign:"left"}}>Privacy Policy for OasisNotes</h1>
        <hr />
-<h2>Privacy Policy</h2>
+            {/* <h2>Privacy Policy</h2> */}
 <p>Last updated: February 13, 2024</p>
 
  <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>

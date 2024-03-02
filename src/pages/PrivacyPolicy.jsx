@@ -51,7 +51,7 @@ const PrivacyPolicy = () => {
        <div>
        <h1 style={{marginTop:"1.5rem",textAlign:"left"}}>Terms and Conditions for Oasisnotes</h1>
        <hr />
-<h2>Terms and Conditions</h2>
+            {/* <h2>Terms and Conditions</h2> */}
 <p>Please read these terms and conditions carefully before using Our Service.</p>
 
 
