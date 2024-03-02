@@ -196,7 +196,7 @@ const PricePage = () => {
         </p>
 
         <div className="pricing-page-container2">
-          {pricing?.map((item, i) => (
+          {pricing?.slice(0, 2)?.map((item, i) => (
             <>
               <div
                 key={i}
