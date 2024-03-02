@@ -88,7 +88,7 @@ const ContactUs = () => {
                   />
                   <div style={{ fontSize: ".9rem", lineHeight: "1rem" }}>
                     <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Sales Email</p>
-                    <p>{contect?.saleEmail}</p>
+                    <p>{contect?.supportEmail}</p>
                   </div>
                 </div>
                 <div
