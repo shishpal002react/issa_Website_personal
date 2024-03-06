@@ -39,16 +39,11 @@ export const NavBar = () => {
                   {/* <NavDropdown.Item href="/support-notes">
                     OasisNotes Support
                   </NavDropdown.Item> */}
-                  <NavDropdown.Item href="/support-account-management">
+                  {/* <NavDropdown.Item href="/support-account-management">
                     Account Management
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                 </NavDropdown>
-                <Nav.Link
-                  style={{ color: "#1A9FB2", fontWeight: "600" }}
-                  href="/pricing"
-                >
-                  Pricing
-                </Nav.Link>
+                
                 <NavDropdown
                   title="About"
                   id="collapsible-nav-dropdown"
@@ -67,6 +62,12 @@ export const NavBar = () => {
                   href="/resources"
                 >
                   Resources
+                </Nav.Link>
+                <Nav.Link
+                  style={{ color: "#1A9FB2", fontWeight: "600" }}
+                  href="/pricing"
+                >
+                  Pricing
                 </Nav.Link>
                 <Nav.Link
                   style={{ color: "#1A9FB2", fontWeight: "600" }}

@@ -288,28 +288,47 @@ const DemoPage = () => {
             <p style={{ fontWeight: "bold" }}>
               For more information or to request a demo, please contact us.
             </p>
-            <p style={{ color: "#0152A8", textDecoration: "underline" }}>
-              {contect?.saleEmail}
-            </p>
+
+            {/* <p style={{ color: "#0152A8", textDecoration: "underline" }}>
+              <span style={{color:"black",textDecoration:"none"}}>Sales Email:</span> {contect?.saleEmail}
+            </p> */}
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "1rem",
+                    alignItems: "center",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  <img
+                    style={{ width: "45px", height: "45px" }}
+                    src="/ContactUs/message.png"
+                    alt=""
+                  />
+                  <div style={{ fontSize: ".9rem", lineHeight: "1rem" }}>
+                    <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Sales Email:</p>
+                    <a href={contect?.supportEmail}>{contect?.supportEmail}</a>
+                  </div>
+                </div>
             <p>{contect?.city}</p>
             <p>{contect?.state}</p>
             <p>{contect?.pincode}</p>
-            <p>
+            {/* <p>
               Support :{" "}
               <span style={{ color: "#0152A8", textDecoration: "underline" }}>
                 {contect?.technicalSupport}
               </span>
-            </p>
-            <p style={{ color: "#0152A8", textDecoration: "underline" }}>
+            </p> */}
+            {/* <p style={{ color: "#0152A8", textDecoration: "underline" }}>
               {contect?.supportEmail}
-            </p>
-            <p>
+            </p> */}
+            {/* <p>
               Sales :{" "}
               <span style={{ color: "#0152A8", textDecoration: "underline" }}>
                 {contect?.salePhone}
               </span>
-            </p>
-            <p>Fax: {contect?.supportFax}</p>
+            </p> */}
+            {/* <p>Fax: {contect?.supportFax}</p> */}
             <p
               style={{
                 display: "flex",
