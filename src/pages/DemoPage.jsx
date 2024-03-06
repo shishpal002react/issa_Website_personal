@@ -307,7 +307,7 @@ const DemoPage = () => {
                   />
                   <div style={{ fontSize: ".9rem", lineHeight: "1rem" }}>
                     <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Sales Email:</p>
-                    <a href={contect?.supportEmail}>{contect?.supportEmail}</a>
+                    <a href={contect?.saleEmail}>{contect?.saleEmail}</a>
                   </div>
                 </div>
             <p>{contect?.city}</p>
