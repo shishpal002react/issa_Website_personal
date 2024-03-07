@@ -43,10 +43,6 @@ const DemoPage = () => {
   const handleData = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
-
     const validateForm = () => {
       // Validate Company Name
       if (companyName.trim() === "") {
@@ -54,13 +50,13 @@ const DemoPage = () => {
         return false;
       }
       if (firstName.trim() === "") {
-        setFirstNameError("First name is required");
+        setFirstNameError("Full Name is required");
         return false;
       }
-      if (lastNameError.trim() === "") {
-        setLastNameError("Last is required");
-        return false;
-      }
+      // if (lastNameError.trim() === "") {
+      //   setLastNameError("Last is required");
+      //   return false;
+      // }
       if (email.trim() === "") {
         setEmailError("Email is required");
         return false;
@@ -74,10 +70,13 @@ const DemoPage = () => {
         return false;
       }
       
+      if (!validateForm()) {
+        return;
+      }
   
       setCompanyNameError('');
       setFirstNameError("");
-      setLastNameError("");
+      // setLastNameError("");
       setEmailError("");
       setPhoneNumberError("");
       setHearAboutUsError("");
@@ -162,7 +161,7 @@ const DemoPage = () => {
               
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
-              <Form.Label>Primary Contact - First Name*</Form.Label>
+              <Form.Label>Full Name*</Form.Label>
               <Form.Control
                 className="border border-dark"
                 type="text"
@@ -173,7 +172,7 @@ const DemoPage = () => {
               />
               {firstNameError && <Form.Text className="text-danger">{firstNameError}</Form.Text>}
             </Form.Group>
-            <Form.Group className="mb-3  " controlId="formBasicEmail">
+            {/* <Form.Group className="mb-3  " controlId="formBasicEmail">
               <Form.Label>Primary Contact - Last Name*</Form.Label>
               <Form.Control
                 className="border border-dark"
@@ -184,7 +183,7 @@ const DemoPage = () => {
                   setLastNameError(e.target.value.trim() === "" ? "Last Name is Required" : "")}}
               />
               {lastNameError && <Form.Text className="text-danger">{lastNameError}</Form.Text>}
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Time Zone*</Form.Label>
               <Form.Select
@@ -227,14 +226,25 @@ const DemoPage = () => {
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
               <Form.Label>How did you hear about us?*</Form.Label>
-              <Form.Control
+              <Form.Select    
+               required
+                value={hearAboutUs}
+                onChange={(e) => {setHearAboutUs(e.target.value)}}>
+              <option>Open this select menu</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Other">Other</option>
+              setHearAboutUsError(e.target.value.trim() === "" ? "This is a Required" : "");
+              </Form.Select>
+              {/* <Form.Control
                 className="border border-dark"
                 type="text"
                 required
                 value={hearAboutUs}
                 onChange={(e) => {setHearAboutUs(e.target.value);
                   setHearAboutUsError(e.target.value.trim() === "" ? "This is a Required" : "")}}
-              />
+              /> */}
               {hearAboutUsError && <Form.Text className="text-danger">{hearAboutUsError}</Form.Text>}
             </Form.Group>
             <Form.Group className="mb-3  " controlId="formBasicEmail">
@@ -311,7 +321,7 @@ const DemoPage = () => {
                   </div>
                 </div>
             <p>{contect?.city}</p>
-            <p>{contect?.state}</p>
+            <p>Address: {contect?.state}</p>
             <p>{contect?.pincode}</p>
             {/* <p>
               Support :{" "}

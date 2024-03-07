@@ -105,7 +105,7 @@ const ContactUs = () => {
                     alt=""
                   />
                   <div style={{ fontSize: ".9rem", lineHeight: "1rem" }}>
-                    <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Text</p>
+                    <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Contact Us</p>
                     <p>{contect?.supportText}</p>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ const ContactUs = () => {
                     alt=""
                   />
                   <div style={{ fontSize: ".9rem", lineHeight: "1rem" }}>
-                    <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Text</p>
+                    <p style={{ fontWeight: "900", lineHeight: "1rem" }}>Contact Us</p>
                     <p>{contect?.supportText}</p>
                   </div>
                 </div>
