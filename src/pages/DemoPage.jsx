@@ -5,11 +5,13 @@ import moment from "moment-timezone";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { show_notification } from '../Api_collection/Api';
+import TimezoneSelect from 'react-timezone-select';
+
 
 const DemoPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [timeZone, setTimeZone] = useState("");
+  const [timeZone, setTimeZone] = useState('');
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -17,6 +19,7 @@ const DemoPage = () => {
   const [describe, setDescribe] = useState("");
   const [timeZones, setTimeZones] = useState([]);
   const [contect, setContect] = useState([]);
+
 
   // Error
   const [firstNameError, setFirstNameError] = useState("");
@@ -123,6 +126,7 @@ const DemoPage = () => {
   const timeHandler = (e) => {
     const selectedTimezone = e.target.value;
     setTimeZone(moment().tz(selectedTimezone).format("h:mm A"));
+    const utcTime = currentTime.utc().format("h:mm A");
   };
 
   return (
@@ -197,6 +201,7 @@ const DemoPage = () => {
                     {zone}
                   </option>
                 ))}
+             
               </Form.Select>
               <p>Current Time: {timeZone}</p>
             </Form.Group>
