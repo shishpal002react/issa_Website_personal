@@ -29,7 +29,37 @@
     margin-bottom: 5px;
 }
 
+/* midle section css */
+.centerDiv{
+    width: 60%;
+    margin: auto;
+    position: relative;
+    top: -100px;
+    padding: 10px;
+}
 
+.center-div-child{
+    margin-top: 1rem;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px 1px rgb(0, 0, 0, 0.3);
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap:2rem;
+}
+
+.center-image{
+    width: 40%;
+    height: auto;
+    text-align: center;
+}
+
+.center-image img{
+    max-width: 250px;
+    max-height: 300px;
+    
+}
 
 .contact-us-container {
     width: 60%;
@@ -195,6 +225,31 @@
     .contact-us-container1>div>img {
         margin-left: 80px;
     }
+/* new center div */
+.centerDiv{
+    width: 90%;
+    margin: auto;
+    position: relative;
+    top: 0px;
+    padding: 10px;
+}
 
+.center-div-child{
+    margin-top: 2rem;
+    display: block;
+}
+
+.center-image{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.center-image img{
+    max-width: 90%;
+    max-height: auto;
+    
+}
 
 }

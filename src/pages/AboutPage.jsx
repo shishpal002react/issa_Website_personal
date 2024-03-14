@@ -137,7 +137,7 @@ const AboutPage = () => {
               fontSize: "1.5rem",
             }}
           >
-            Oasis Notes Support
+            OASIS NOTES SUPPORT
           </p>
           <p style={{ marginBottom: "2rem" }}>
             <span style={{ color: "#1A9FB2", fontWeight: "bold" }}>
