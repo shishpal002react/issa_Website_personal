@@ -281,24 +281,9 @@ const PricePage = () => {
                     View more
                   </p> */}
 
-                  <div style={{ marginTop: "2rem"}}>
-                    {item?.details?.map((data, i) => (
-                      <ul
-                        key={i}
-                        style={{
-                          // textAlign: "center",
-                          width: "90%",
-                          margin: "auto",
-                          // paddingBottom: "1.5rem",
-                          fontWeight: "bold",
-                          paddingTop: "1rem",
-                          // lineHeight:"1.5rem"
-                        }}
-                      >
-                        <li>{data}</li>
-                      </ul>
-                    ))}
-                  </div>
+<div style={{ marginTop: "2rem"}} dangerouslySetInnerHTML={{__html: item?.details || ""}}>
+</div>
+
                 </div>
               </div>
             </>
