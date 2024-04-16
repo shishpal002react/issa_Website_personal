@@ -1,8 +1,36 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-export const NavBar = () => {
+import { FaPhoneAlt } from "react-icons/fa";
+
+const NavBar = () => {
+
+  const [contect, setContect] = useState("");
+
+  const BaseUrl = "https://issa-backend.vercel.app/api/v1/";
+
+  const contectDetail = async () => {
+    try {
+      const res = await axios.get(
+        `${BaseUrl}ContactDetails/viewContactDetails`
+      );
+      setContect(res.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    contectDetail();
+  }, []);
+
+  console.log(contect,"data")
+
+
+
   return (
     <div style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
       <Navbar
@@ -36,12 +64,7 @@ export const NavBar = () => {
                   <NavDropdown.Item href="/support-downloads">
                     Downloads
                   </NavDropdown.Item>
-                  {/* <NavDropdown.Item href="/support-notes">
-                    OasisNotes Support
-                  </NavDropdown.Item> */}
-                  {/* <NavDropdown.Item href="/support-account-management">
-                    Account Management
-                  </NavDropdown.Item> */}
+             
                 </NavDropdown>
                 
                 <NavDropdown
@@ -106,6 +129,12 @@ export const NavBar = () => {
                 >
                   Request Demo
                 </Nav.Link>
+                <Nav.Link
+                
+                >
+                  <FaPhoneAlt /> 
+                  {contect?.supportText}
+                </Nav.Link>
 
               </Nav>
               
@@ -116,3 +145,6 @@ export const NavBar = () => {
     </div>
   );
 };
+
+
+export default NavBar;

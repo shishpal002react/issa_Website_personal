@@ -212,7 +212,7 @@ const PricePage = () => {
                     fontSize: "1.5rem",
                   }}
                 >
-                 {`Plan ${i+1}`}
+                 {item?.name}
                 </p>
                 <div
                   style={{
@@ -228,28 +228,14 @@ const PricePage = () => {
                       marginTop: "1rem",
                     }}
                   >
-                    ${item?.perUser}/ Month
+                    <span style={{fontSize: "2.5rem"}}>${item?.perUser}</span>/ Month
                   </p>
-                  {/* <p
-                    style={{
-                      fontSize: ".8rem",
-                      fontWeight: "bold",
-                      color: "#AF110C",
-                    }}
-                  >
-                    PER MONTH
-                  </p> */}
-
-                  {/* <p style={{fontSize:"16px",fontWeight:"bold",width:"80%",margin:"auto",textAlign:"center"}}>
-            The first three-month charge will be ${item?.perUser*3} as the initial payment, after which ${item?.perUser} will be automatically charged every month.
-        </p> */}
-
+             
                   <button
                     style={{
                       alignItems: "center",
                       marginTop: "1rem",
                       cursor: "pointer",
-                      // backgroundColor: "#1A9FB2",#555
                       backgroundColor: "#555",
                       outline: "none",
                       padding: "10px",

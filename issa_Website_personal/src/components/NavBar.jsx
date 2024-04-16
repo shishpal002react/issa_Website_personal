@@ -2,6 +2,9 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { FaPhoneAlt } from "react-icons/fa";
+
+
 export const NavBar = () => {
   return (
     <div style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
@@ -105,6 +108,12 @@ export const NavBar = () => {
                   href="/demo-request"
                 >
                   Request Demo
+                </Nav.Link>
+
+                <Nav.Link
+                
+                >
+                  <FaPhoneAlt /> +1 6236963203
                 </Nav.Link>
 
               </Nav>
