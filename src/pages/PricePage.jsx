@@ -267,7 +267,7 @@ const PricePage = () => {
                     View more
                   </p> */}
 
-<div style={{ marginTop: "2rem"}} dangerouslySetInnerHTML={{__html: item?.details || ""}}>
+<div style={{ marginTop: "1rem", display: "block", alignContent: "center", padding: "0 10px" }} dangerouslySetInnerHTML={{ __html: item?.details || "" }}>
 </div>
 
                 </div>
