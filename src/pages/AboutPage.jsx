@@ -50,7 +50,7 @@ const AboutPage = () => {
         <div className="support-page-container21111">
           <span style={{paddingLeft:"1rem"}}>OASIS NOTES</span>
           {/* <span>
-            <img src="/SupportPage/zoom.png" alt="zoom" />
+            <img src="/SupportPage/zoom.png" alt="zoom" gfhgh ghjg/>
           </span> */}
         </div>
          <div className="container d-flex justify-content-center align-items-center">
@@ -73,7 +73,7 @@ const AboutPage = () => {
 
 
         {/* <div className="support-page-container211">
-          <span>OasisNotes Support</span>
+          <span>OasisNotes Support</span>fghgh ghgh
           <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
           <div style={{padding: "10px", borderRadius:"18px",color:"white",cursor:"pointer", backgroundColor:"#1A9FB2", fontSize:"12px",width:"70%",textAlign:"center"}}>OasisNotes Support</div>
           </div>
