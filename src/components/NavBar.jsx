@@ -105,7 +105,7 @@ const NavBar = () => {
                   className="custom-dropdown-title"
                 >
                   
-                  <NavDropdown.Item href="https://issa-patient-update-website.vercel.app/">
+                  <NavDropdown.Item href="https://issa-patient-panel.vercel.app/">
                     Patient Panel
                   </NavDropdown.Item>
                   <NavDropdown.Item href="https://issa-employee-panel.vercel.app/">
