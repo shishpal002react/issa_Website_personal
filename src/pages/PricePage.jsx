@@ -180,7 +180,7 @@ const PricePage = () => {
     <div className="support-page">
       <div className="support-page-container">
         {/* <p>OASISNOTES® PRICING</p> */}
-        <p>{fpq?.name}</p>
+        <p>{fpq?.heading}</p>
       </div>
       <div className="pricing-page-container">
         <p
@@ -193,7 +193,7 @@ const PricePage = () => {
             fontStyle: "italic",
           }}
         >
-          {fpq?.heading}
+          {fpq?.subHeading}
         </p>
 
         <div className="pricing-page-container2">
@@ -268,7 +268,7 @@ const PricePage = () => {
                     View more
                   </p> */}
 
-<div style={{ marginTop: "1rem", display: "block", alignContent: "center", padding: "0 10px" }} dangerouslySetInnerHTML={{ __html: item?.details || "" }}>
+<div className="pricing-inner-content" dangerouslySetInnerHTML={{ __html: item?.details || "" }}>
 </div>
 
                 </div>
