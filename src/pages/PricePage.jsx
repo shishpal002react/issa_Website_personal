@@ -246,7 +246,7 @@ const PricePage = () => {
                       alignItems: "center",
                       marginTop: "0.5rem",
                       cursor: "pointer",
-                      backgroundColor: "linear-gradient(to right, #555, #333)", // Gradient background
+                      backgroundColor:"#555", // Gradient background
                       outline: "none",
                       padding: "10px",
                       border: "none",
