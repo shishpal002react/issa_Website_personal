@@ -83,7 +83,7 @@ const ResourcesPage = () => {
       </div>
       <div className="partner-page-container2">
         <p style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
-        Link Resources
+        {mainBlog?.linkTitle}
         </p>
 
         <div className="partner-page-container21">
@@ -115,13 +115,16 @@ const ResourcesPage = () => {
               <p>{blogNotes?.description}</p>
              
             </div> */}
-            <ul>
+              <div
+                    dangerouslySetInnerHTML={{ __html: mainBlog?.linkDescription || "" }}
+                  ></div>
+            {/* <ul>
               <li>For Behavioral Health Residential Facilities Licensing ADHS - Residential Facilities Licensing - Home (<a href="https://www.azdhs.gov/">azdhs.gov</a>)</li>
               <li>APEP Login    Identity Cloud Service (<a href="https://www.oracle.com/cloud/">oraclecloud.com</a>)</li>
               <li>QM Portal      (<a href="https://qmportal.azahcccs.gov">https://qmportal.azahcccs.gov</a>)</li>
               <li>AHCCCS ONLINE    (<a href="https://azwebtst.statemedicaid.us">https://azwebtst.statemedicaid.us</a>)  </li>
               <li>Relias - Small Provider Portal (SPP) (<a href="https://www.relias.com/">reliaslearning.com</a>)</li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div>
@@ -138,7 +141,9 @@ const ResourcesPage = () => {
             </p>
             <div className="resources-page-container2111">
               <div className="resources-page-container21111">
-                <p style={{fontWeight:"500",fontSize:"16px"}}>{mainBlog?.description}</p>
+                <p style={{fontWeight:"500",fontSize:"16px"}}  dangerouslySetInnerHTML={{ __html: mainBlog?.description || "" }}>
+                
+                </p>
                 <p>
                   <button
                     onClick={() =>
