@@ -81,8 +81,8 @@ const ResourcesPage = () => {
       <div className="support-page-container">
         <p>Resources</p>
       </div>
-      <div className="partner-page-container2">
-        <p style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
+      <div className="partner-page-container2" style={{marginTop: "1rem"}}>
+        <p style={{ fontWeight: "bold", fontSize: "1.5rem" ,margin:"0"}}>
         {mainBlog?.linkTitle}
         </p>
 
@@ -134,7 +134,7 @@ const ResourcesPage = () => {
                 fontWeight: "bold",
                 fontSize: "1.3rem",
                 borderTop: "1px solid #CCCCCC",
-                paddingTop: "1.3rem",
+                paddingTop: "0.5rem",
               }}
             >
               {mainBlog?.title}
@@ -171,8 +171,7 @@ const ResourcesPage = () => {
                     fontWeight: "bold",
                     fontSize: "1.3rem",
                     color: "#32373A",
-                    marginTop: "1.6rem",
-                    marginBottom: "0.5rem"
+                    margin:"0rem"
                   }}
                 >
                   Browse by Category
@@ -185,7 +184,7 @@ const ResourcesPage = () => {
                         flexDirection: "column",
                         gap: ".2rem",
                         alignItems: "center",
-                        marginBottom: "2rem",
+                        marginBottom: "1rem",
                       }}
                       key={i}
                     >
@@ -205,6 +204,7 @@ const ResourcesPage = () => {
                           fontWeight: "700",
                           fontSize: "1rem",
                           color: "#32373A",
+                          
                         }}
                       >
                         {item?.title}
