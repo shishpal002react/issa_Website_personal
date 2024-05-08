@@ -69,7 +69,7 @@ const SupportPage = () => {
                 >
                 </p>
 
-                <p style={{ color: "#AF110C",margin:"0" }}>{item?.question}</p>
+                <p style={{fontSize: "1.5rem", color: "#AF110C",margin:"0" }}>{item?.question}</p>
                 <p style={{ fontSize: "1rem",margin:"0",fontWeight:"bold" }}>{item?.answer}</p>
               
               </div>
