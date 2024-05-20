@@ -29,7 +29,7 @@ const amount = amountMatch ? amountMatch[1] : null;
 
     const verifySubscription = async () => {
       try {
-        
+ 
         const res2 = await axios.get(`${BaseUrl}successOrderForPaypal?paymentId=${paymentId}&PayerID=${payerId}&amount=${amount/100}`);
         
           const res1 = await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
