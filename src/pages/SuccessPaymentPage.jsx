@@ -11,7 +11,7 @@ function SuccessPaymentPage() {
 
 
 const { paremId } = useParams();
-const fullString = paremId;
+const fullString = paremId || '';
 const idMatch = fullString.match(/^[^-]+/);
 const id = idMatch ? idMatch[0] : null;
 
