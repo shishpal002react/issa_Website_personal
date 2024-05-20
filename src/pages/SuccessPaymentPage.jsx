@@ -31,8 +31,6 @@ const amount = amountMatch ? amountMatch[1] : null;
       try {
         
         const res2 = await axios.get(`${BaseUrl}user/successOrderForPaypal?paymentId=${paymentId}&PayerID=${payerId}&amount=${amount}`);
-
-
         
           const res1 = await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
             Status: "Paid"
