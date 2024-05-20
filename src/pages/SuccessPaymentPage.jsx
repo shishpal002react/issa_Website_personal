@@ -11,10 +11,9 @@ function SuccessPaymentPage() {
 
 
 const { paremId } = useParams();
-const id=paremId.split('-amount')[0]
-// const fullString = paremId;
-// const idMatch = fullString.match(/^[^-]+/);
-// const id = idMatch ? idMatch[0] : null;
+const fullString = paremId;
+const idMatch = fullString.match(/^[^-]+/);
+const id = idMatch ? idMatch[0] : null;
 
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const id=paremId.split('-amount')[0]
     if (id) {
       verifySubscription();
     }
-  }, [id, navigate, BaseUrl,location.search]);
+  }, [id, navigate, BaseUrl, location.search]);
 
   return (
     <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>
