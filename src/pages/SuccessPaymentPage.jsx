@@ -30,7 +30,7 @@ const amount = amountMatch ? amountMatch[1] : null;
     const verifySubscription = async () => {
       try {
         // Second API call
-        const res2 = await axios.get(`${BaseUrl}?paymentId=${paymentId}&PayerID=${payerId}&amount=${amount}`);
+        const res2 = await axios.get(`${BaseUrl}user/successOrderForPaypal?paymentId=${paymentId}&PayerID=${payerId}&amount=${amount}`);
         console.log('Second API call response:', res2.data);
 
           // First API call
