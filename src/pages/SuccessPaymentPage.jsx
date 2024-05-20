@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import axios from 'axios'; // Import axios
 import { show_notification } from "../Api_collection/Api";
 import { useNavigate, useParams, useLocation  } from 'react-router-dom';
@@ -6,9 +6,9 @@ import { useNavigate, useParams, useLocation  } from 'react-router-dom';
 function SuccessPaymentPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [show,setShow]=useState(false);
 
-  const BaseUrl = import.meta.env.VITE_API_BASEURL;
-
+const BaseUrl = import.meta.env.VITE_API_BASEURL;
 
 const {id} = useParams();
 const fullString = id || '';
@@ -35,7 +35,7 @@ const amount = amountMatch ? amountMatch[1] : null;
           const res1 = await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
             Status: "Paid"
           });
-  
+          setShow(true)
 
         show_notification("Payment success!", "Payment Successful", "success");
 
@@ -54,7 +54,11 @@ const amount = amountMatch ? amountMatch[1] : null;
   }, [parent_id, navigate, BaseUrl]);
 
   return (
-    <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>
+    <>
+    {
+      show ? <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>:<div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem",visibility: "0" }}>...</div>
+    }
+    </>
   );
 }
 
