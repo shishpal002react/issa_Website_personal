@@ -15,7 +15,6 @@ const fullString = id || '';
 const idMatch = fullString.match(/^[^-]+/);
 const parent_id = idMatch ? idMatch[0] : null;
 
-console.log(paremId,"data is paremId define");
 console.log(id,"data is id define");
 
   useEffect(() => {
