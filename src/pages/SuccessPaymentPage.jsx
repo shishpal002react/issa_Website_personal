@@ -16,13 +16,13 @@ const idMatch = fullString.match(/^[^-]+/);
 const id = idMatch ? idMatch[0] : null;
 
 
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const amount = searchParams.get('amount');
     const paymentId = searchParams.get('paymentId');
     const token = searchParams.get('token');
     const payerId = searchParams.get('PayerID');
-
 
 
     const verifySubscription = async () => {
@@ -50,10 +50,10 @@ const id = idMatch ? idMatch[0] : null;
     if (id) {
       verifySubscription();
     }
-  }, [id, navigate, BaseUrl, location.search]);
+  }, [id, navigate, BaseUrl]);
 
   return (
-    <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>
+    <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful data</div>
   );
 }
 
