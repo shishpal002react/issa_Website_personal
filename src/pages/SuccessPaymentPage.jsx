@@ -14,17 +14,18 @@ const {id} = useParams();
 const fullString = id || '';
 const idMatch = fullString.match(/^[^-]+/);
 const parent_id = idMatch ? idMatch[0] : null;
+const amountMatch = fullString.match(/-amount=(\d+)/);
+const amount = amountMatch ? amountMatch[1] : null;
 
-console.log(id,"data is id define");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const amount = searchParams.get('amount');
+   
     const paymentId = searchParams.get('paymentId');
     const token = searchParams.get('token');
     const payerId = searchParams.get('PayerID');
 
-    console.log(searchParams,"data is id defineghgh");
+  
 
     const verifySubscription = async () => {
       try {
