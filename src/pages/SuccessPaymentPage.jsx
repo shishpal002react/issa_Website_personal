@@ -15,7 +15,8 @@ const fullString = paremId || '';
 const idMatch = fullString.match(/^[^-]+/);
 const id = idMatch ? idMatch[0] : null;
 
-
+console.log(paremId,"data is paremId define");
+console.log(id,"data is id define");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -47,13 +48,13 @@ const id = idMatch ? idMatch[0] : null;
       }
     };
 
-    if (id) {
+   
       verifySubscription();
-    }
+    
   }, [id, navigate, BaseUrl]);
 
   return (
-    <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful data</div>
+    <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>
   );
 }
 
