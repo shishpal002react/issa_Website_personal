@@ -14,27 +14,30 @@ const {id} = useParams();
 const fullString = id || '';
 const idMatch = fullString.match(/^[^-]+/);
 const parent_id = idMatch ? idMatch[0] : null;
-const amountMatch = fullString.match(/-amount=(\d+)/);
-const amount = amountMatch ? amountMatch[1] : null;
 
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-   
+    const amount = searchParams.get('amount');
     const paymentId = searchParams.get('paymentId');
-    const token = searchParams.get('token');
     const payerId = searchParams.get('PayerID');
 
-  
+
+    // console.log('Amount:', amount);
+    // console.log('Payment ID:', paymentId);
+    // console.log('Payer ID:', payerId);
+    // console.log('Extracted ID:', parent_id);
 
     const verifySubscription = async () => {
       try {
  
         const res2 = await axios.get(`${BaseUrl}successOrderForPaypal?paymentId=${paymentId}&PayerID=${payerId}&amount=${amount/100}`);
-        
+
           const res1 = await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
             Status: "Paid"
           });
+
+
           setShow(true)
 
         show_notification("Payment success!", "Payment Successful", "success");
