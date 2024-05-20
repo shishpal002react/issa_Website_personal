@@ -10,10 +10,10 @@ function SuccessPaymentPage() {
   const BaseUrl = import.meta.env.VITE_API_BASEURL;
 
 
-const { paremId } = useParams();
-const fullString = paremId || '';
+const {id} = useParams();
+const fullString = id || '';
 const idMatch = fullString.match(/^[^-]+/);
-const id = idMatch ? idMatch[0] : null;
+const parent_id = idMatch ? idMatch[0] : null;
 
 console.log(paremId,"data is paremId define");
 console.log(id,"data is id define");
@@ -25,6 +25,7 @@ console.log(id,"data is id define");
     const token = searchParams.get('token');
     const payerId = searchParams.get('PayerID');
 
+    console.log(searchParams,"data is id defineghgh");
 
     const verifySubscription = async () => {
       try {
@@ -33,7 +34,7 @@ console.log(id,"data is id define");
         console.log('Second API call response:', res2.data);
 
           // First API call
-          const res1 = await axios.post(`${BaseUrl}verifySubscription/${id}`, {
+          const res1 = await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
             Status: "Paid"
           });
   
@@ -48,10 +49,12 @@ console.log(id,"data is id define");
       }
     };
 
-   
+    if(parent_id){
       verifySubscription();
+    }
     
-  }, [id, navigate, BaseUrl]);
+    
+  }, [parent_id, navigate, BaseUrl]);
 
   return (
     <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>
