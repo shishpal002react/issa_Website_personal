@@ -36,13 +36,16 @@ const parent_id = idMatch ? idMatch[0] : null;
 
 
         if(res2.data.Status===200){
-          await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
+          const res1 = await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
             Status: "Paid"
           });
-          show_notification("Payment success!", "Payment Successful", "success");
+
+          if(res1.data.Status===201){
+            show_notification("Payment success!", "Payment Successful", "success");
+          }
         }
         setShow(true)
-        navigate("/");
+        // navigate("/");
       } catch (error) {
         console.error('API call error:', error);
         show_notification("Payment Fail!", "Something went wrong", "danger");
