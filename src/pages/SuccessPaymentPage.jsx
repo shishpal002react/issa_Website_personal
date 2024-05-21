@@ -40,7 +40,7 @@ const parent_id = idMatch ? idMatch[0] : null;
             Status: "Paid"
           });
 
-          if(res1.data.status===201){
+          if(res1.data.status===200){
             setShow(true);
             show_notification("Payment success!", "Payment Successful", "success");
           }
