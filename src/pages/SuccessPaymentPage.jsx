@@ -35,12 +35,12 @@ const parent_id = idMatch ? idMatch[0] : null;
         const res2 = await axios.get(`${BaseUrl}successOrderForPaypal?paymentId=${paymentId}&PayerID=${payerId}&amount=${amount}`);
 
 
-        if(res2.data.Status===200){
+        if(res2.data.status===200){
           const res1 = await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
             Status: "Paid"
           });
 
-          if(res1.data.Status===201){
+          if(res1.data.status===201){
             setShow(true);
             show_notification("Payment success!", "Payment Successful", "success");
           }
