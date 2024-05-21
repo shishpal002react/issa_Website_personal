@@ -39,11 +39,9 @@ const parent_id = idMatch ? idMatch[0] : null;
           await axios.post(`${BaseUrl}verifySubscription/${parent_id}`, {
             Status: "Paid"
           });
+          show_notification("Payment success!", "Payment Successful", "success");
         }
-
         setShow(true)
-        show_notification("Payment success!", "Payment Successful", "success");
-
         navigate("/");
       } catch (error) {
         console.error('API call error:', error);
