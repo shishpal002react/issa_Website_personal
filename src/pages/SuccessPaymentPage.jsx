@@ -46,7 +46,7 @@ const parent_id = idMatch ? idMatch[0] : null;
           }
         }
    
-        // navigate("/");
+        navigate("/");
       } catch (error) {
         console.error('API call error:', error);
         show_notification("Payment Fail!", "Something went wrong", "danger");
@@ -63,7 +63,7 @@ const parent_id = idMatch ? idMatch[0] : null;
   return (
     <>
     {
-      show ? <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>:<div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem",visibility: "0" }}>Payment pending ...</div>
+      show ? <div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem" }}>Payment Successful</div>:<div style={{ marginTop: "2rem", textAlign: "center", fontSize: "2rem",visibility: "0" }}>payment progress...</div>
     }
     </>
   );
